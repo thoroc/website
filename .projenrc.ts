@@ -12,10 +12,21 @@ const project = new web.NextJsTypeScriptProject({
   mergify: false,
   tailwind: true,
 
-  // deps: [],                /* Runtime dependencies of this module. */
+  deps: [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled",
+    "@fontsource/roboto",
+    "@mui/icons-material",
+  ],
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
   // tailwind: true,          /* Setup Tailwind CSS as a PostCSS plugin. */
 });
+
+project
+  .tryFindObjectFile("tsconfig.json")
+  ?.addDeletionOverride("compilerOptions.rootDir");
+
 project.synth();

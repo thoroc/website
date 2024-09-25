@@ -83,6 +83,26 @@
       "type": "build"
     },
     {
+      "name": "@emotion/react",
+      "type": "runtime"
+    },
+    {
+      "name": "@emotion/styled",
+      "type": "runtime"
+    },
+    {
+      "name": "@fontsource/roboto",
+      "type": "runtime"
+    },
+    {
+      "name": "@mui/icons-material",
+      "type": "runtime"
+    },
+    {
+      "name": "@mui/material",
+      "type": "runtime"
+    },
+    {
       "name": "autoprefixer",
       "type": "runtime"
     },
