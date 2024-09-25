@@ -30,4 +30,8 @@ project
   .tryFindObjectFile("tsconfig.json")
   ?.addDeletionOverride("compilerOptions.rootDir");
 
+project
+  .tryFindObjectFile("package.json")
+  ?.addOverride("engines", { node: ">=20" });
+
 project.synth();
