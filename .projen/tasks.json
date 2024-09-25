@@ -98,6 +98,16 @@
         }
       ]
     },
+    "eslint": {
+      "name": "eslint",
+      "description": "Runs eslint against the codebase",
+      "steps": [
+        {
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ pages test build-tools projenrc .projenrc.ts",
+          "receiveArgs": true
+        }
+      ]
+    },
     "export": {
       "name": "export",
       "description": "Exports the application for production deployment",
@@ -161,7 +171,25 @@
     },
     "test": {
       "name": "test",
-      "description": "Run tests"
+      "description": "Run tests",
+      "steps": [
+        {
+          "exec": "jest --passWithNoTests --updateSnapshot",
+          "receiveArgs": true
+        },
+        {
+          "spawn": "eslint"
+        }
+      ]
+    },
+    "test:watch": {
+      "name": "test:watch",
+      "description": "Run jest in watch mode",
+      "steps": [
+        {
+          "exec": "jest --watch"
+        }
+      ]
     },
     "upgrade": {
       "name": "upgrade",
@@ -171,13 +199,13 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/react,@types/react-dom,projen,ts-node,typescript,autoprefixer,next,postcss,react,react-dom,tailwindcss"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/react,@types/react-dom,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,jest,prettier,projen,ts-jest,ts-node,typescript,autoprefixer,next,postcss,react,react-dom,tailwindcss"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @types/node @types/react @types/react-dom constructs projen ts-node typescript autoprefixer next postcss react react-dom tailwindcss"
+          "exec": "pnpm update @types/jest @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit prettier projen ts-jest ts-node typescript autoprefixer next postcss react react-dom tailwindcss"
         },
         {
           "exec": "npx projen"
