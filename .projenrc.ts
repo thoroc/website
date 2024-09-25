@@ -18,6 +18,7 @@ const project = new web.NextJsTypeScriptProject({
     "@emotion/styled",
     "@fontsource/roboto",
     "@mui/icons-material",
+    "@vercel/speed-insights",
   ],
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
   // devDeps: [],             /* Build dependencies for this module. */

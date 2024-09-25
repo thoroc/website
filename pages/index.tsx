@@ -1,4 +1,5 @@
 import "tailwindcss/tailwind.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Head from "next/head";
 import Image from "next/image";
 import coverImg from "../public/img/background.png";
@@ -24,6 +25,7 @@ export default function Home() {
       </main>
 
       <footer></footer>
+      <SpeedInsights />
     </div>
   );
 }

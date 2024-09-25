@@ -103,6 +103,10 @@
       "type": "runtime"
     },
     {
+      "name": "@vercel/speed-insights",
+      "type": "runtime"
+    },
+    {
       "name": "autoprefixer",
       "type": "runtime"
     },
