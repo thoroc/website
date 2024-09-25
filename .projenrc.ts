@@ -1,8 +1,11 @@
-import { web } from "projen";
+import { web } from 'projen';
+import { NodePackageManager } from 'projen/lib/javascript';
+
 const project = new web.NextJsTypeScriptProject({
-  defaultReleaseBranch: "main",
-  name: "website",
+  defaultReleaseBranch: 'main',
+  name: 'website',
   projenrcTs: true,
+  packageManager: NodePackageManager.PNPM,
 
   // deps: [],                /* Runtime dependencies of this module. */
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
