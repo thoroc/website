@@ -46,7 +46,10 @@ junit.xml
 /lib
 /dist/
 !/.eslintrc.json
-!/tailwind.config.json
-!/postcss.config.json
 /.next/
 !/.projenrc.ts
+!/vercel.json
+!/next.config.mjs
+!/next-env.d.ts
+!/tailwind.config.ts
+!/postcss.config.mjs

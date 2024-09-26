@@ -16,8 +16,8 @@
     "project": "./tsconfig.dev.json"
   },
   "extends": [
-    "plugin:import/typescript",
-    "plugin:prettier/recommended"
+    "next/core-web-vitals",
+    "next/typescript"
   ],
   "settings": {
     "import/parsers": {

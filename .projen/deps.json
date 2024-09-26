@@ -6,7 +6,6 @@
     },
     {
       "name": "@types/node",
-      "version": "^16",
       "type": "build"
     },
     {
@@ -32,8 +31,20 @@
       "type": "build"
     },
     {
+      "name": "autoprefixer",
+      "type": "build"
+    },
+    {
       "name": "constructs",
       "version": "^10.0.0",
+      "type": "build"
+    },
+    {
+      "name": "eslint",
+      "type": "build"
+    },
+    {
+      "name": "eslint-config-next",
       "type": "build"
     },
     {
@@ -53,8 +64,7 @@
       "type": "build"
     },
     {
-      "name": "eslint",
-      "version": "^8",
+      "name": "eslint-plugin-react",
       "type": "build"
     },
     {
@@ -67,11 +77,19 @@
       "type": "build"
     },
     {
+      "name": "postcss",
+      "type": "build"
+    },
+    {
       "name": "prettier",
       "type": "build"
     },
     {
       "name": "projen",
+      "type": "build"
+    },
+    {
+      "name": "tailwindcss",
       "type": "build"
     },
     {
@@ -115,15 +133,7 @@
       "type": "runtime"
     },
     {
-      "name": "autoprefixer",
-      "type": "runtime"
-    },
-    {
       "name": "next",
-      "type": "runtime"
-    },
-    {
-      "name": "postcss",
       "type": "runtime"
     },
     {
@@ -132,10 +142,6 @@
     },
     {
       "name": "react-dom",
-      "type": "runtime"
-    },
-    {
-      "name": "tailwindcss",
       "type": "runtime"
     }
   ],

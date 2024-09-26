@@ -1,5 +1,13 @@
 import { web } from "projen";
 import { NodePackageManager } from "projen/lib/javascript";
+import {
+  NextJs,
+  AddOverride,
+  Vercel,
+  addOverrideOptions,
+  DeleteOverride,
+  TailWind,
+} from "./projenrc";
 
 const project = new web.NextJsTypeScriptProject({
   defaultReleaseBranch: "main",
@@ -10,7 +18,7 @@ const project = new web.NextJsTypeScriptProject({
   eslint: true,
   prettier: true,
   mergify: false,
-  tailwind: true,
+  tailwind: false,
 
   deps: [
     "@mui/material",
@@ -20,19 +28,54 @@ const project = new web.NextJsTypeScriptProject({
     "@mui/icons-material",
     "@vercel/speed-insights",
   ],
-  devDeps: ["vercel", "@vercel/next"],
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
+  description: "Personal website",
   // packageName: undefined,  /* The "name" in package.json. */
   // tailwind: true,          /* Setup Tailwind CSS as a PostCSS plugin. */
 });
 
-project
-  .tryFindObjectFile("tsconfig.json")
-  ?.addDeletionOverride("compilerOptions.rootDir");
+const addTsconfigOptions: addOverrideOptions = {
+  compilerOptions: {
+    lib: ["ES2019"],
+    target: "ES2019",
+    module: "CommonJS",
+    moduleResolution: "node",
+  },
+};
 
-project
-  .tryFindObjectFile("package.json")
-  ?.addOverride("engines", { node: ">=20" });
+AddOverride(project, "tsconfig.json", addTsconfigOptions);
+AddOverride(project, "tsconfig.dev.json", addTsconfigOptions);
+
+const deleteTsconfigOptions = ["compilerOptions.rootDir"];
+
+DeleteOverride(project, "tsconfig.json", deleteTsconfigOptions);
+
+// const TARGET = "ES2019";
+// const MODULE = "CommonJS";
+// const MODULE_RESOLUTION = "node";
+
+// const tsConfig = project.tryFindObjectFile("tsconfig.json");
+
+// for (const [key, value] of Object.entries(compilerOptions)) {
+//   tsConfig?.addOverride(`compilerOptions.${key}`, value);
+// }
+
+// tsConfig?.addDeletionOverride("compilerOptions.rootDir");
+
+// const tsConfigDev = project.tryFindObjectFile("tsconfig.dev.json");
+// tsConfigDev?.addOverride("compilerOptions.lib", [TARGET]);
+// tsConfigDev?.addOverride("compilerOptions.target", TARGET);
+// tsConfigDev?.addOverride("compilerOptions.module", MODULE);
+
+const packageJson = project.tryFindObjectFile("package.json");
+packageJson?.addOverride("engines", { node: ">=20" });
+// packageJson?.addOverride("type", "module");
+
+console.log(project instanceof web.NextJsTypeScriptProject);
+
+const vercel = new Vercel(project);
+vercel.synthesize();
+
+new NextJs(project);
+new TailWind(project);
 
 project.synth();

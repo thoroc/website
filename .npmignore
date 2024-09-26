@@ -20,8 +20,6 @@ dist
 /.projenrc.js
 tsconfig.tsbuildinfo
 /.eslintrc.json
-/tailwind.config.json
-/postcss.config.json
 /.next/
 /.gitattributes
 /.projenrc.ts

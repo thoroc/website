@@ -8,11 +8,9 @@
     "inlineSourceMap": true,
     "inlineSources": true,
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "ES2019"
     ],
-    "module": "commonjs",
+    "module": "CommonJS",
     "noEmitOnError": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -25,8 +23,8 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
-    "target": "es5",
-    "moduleResolution": "bundler",
+    "target": "ES2019",
+    "moduleResolution": "node",
     "isolatedModules": true,
     "jsx": "preserve",
     "allowJs": true,
