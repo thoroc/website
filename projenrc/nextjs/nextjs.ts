@@ -21,17 +21,6 @@ export class NextJs extends Component {
       "eslint-plugin-react",
       "typescript",
     );
-    // project.removeTask("compile");
-
-    // project.addTask("compile", {
-    //   description: "Only compile",
-    //   steps: [
-    //     {
-    //       exec: "tsc --build",
-    //     },
-    //     { exec: "next build" },
-    //   ],
-    // });
 
     this.project = project;
   }
