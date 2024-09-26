@@ -1,7 +1,7 @@
 import { Component } from "projen";
 import { TypeScriptProject } from "projen/lib/typescript";
 import { AddOverride } from "../utils";
-import { NextConfig, NextEnv, GlobalCss, Page, Layout } from "./files";
+import { NextConfig, NextEnv, GlobalsCss, Page, Layout } from "./files";
 import { TsConfig } from "./tsconfig";
 
 export class NextJs extends Component {
@@ -21,6 +21,17 @@ export class NextJs extends Component {
       "eslint-plugin-react",
       "typescript",
     );
+    // project.removeTask("compile");
+
+    // project.addTask("compile", {
+    //   description: "Only compile",
+    //   steps: [
+    //     {
+    //       exec: "tsc --build",
+    //     },
+    //     { exec: "next build" },
+    //   ],
+    // });
 
     this.project = project;
   }
@@ -56,7 +67,7 @@ export class NextJs extends Component {
     new NextEnv(this.project);
 
     // source code
-    new GlobalCss(this.project);
+    new GlobalsCss(this.project);
     new Page(this.project);
     new Layout(this.project);
 
@@ -65,5 +76,25 @@ export class NextJs extends Component {
     this.project.gitignore.exclude("/.next/");
     this.project.gitignore.exclude("/out/");
     this.project.gitignore.exclude("next-env.d.ts");
+
+    this.project.addTask("dev", {
+      description: "Starts the Next.js application in development mode",
+      steps: [{ exec: "next dev" }],
+    });
+    this.project.addTask("server", {
+      description: "Starts the Next.js application in production mode",
+      steps: [{ exec: "next start" }],
+    });
+    this.project.addTask("telemetry", {
+      description: "Checks the status of Next.js telemetry collection",
+      steps: [{ exec: "next telemetry" }],
+    });
+
+    this.project
+      .tryFindObjectFile(".projen/tasks.json")
+      ?.addOverride("tasks.compile.steps", [
+        { exec: "tsc --build" },
+        { exec: "next build" },
+      ]);
   }
 }

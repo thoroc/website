@@ -21,7 +21,12 @@
       "@components/*": [
         "./src/components/*"
       ]
-    }
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "**/*.ts",

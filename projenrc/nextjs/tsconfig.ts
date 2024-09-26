@@ -1,3 +1,4 @@
+import * as fs from "fs";
 import {
   TypescriptConfig,
   TypeScriptJsxMode,
@@ -38,5 +39,9 @@ export class TsConfig extends TypescriptConfig {
     this.addInclude(".next/types/**/*.ts");
 
     this.addExclude("node_modules");
+  }
+
+  public postSynthesize(): void {
+    fs.chmodSync("tsconfig.json", 0o775);
   }
 }

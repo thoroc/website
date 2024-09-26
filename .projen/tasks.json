@@ -62,6 +62,9 @@
       "steps": [
         {
           "exec": "tsc --build"
+        },
+        {
+          "exec": "next build"
         }
       ]
     },
@@ -71,6 +74,15 @@
       "steps": [
         {
           "exec": "ts-node --project tsconfig.dev.json .projenrc.ts"
+        }
+      ]
+    },
+    "dev": {
+      "name": "dev",
+      "description": "Starts the Next.js application in development mode",
+      "steps": [
+        {
+          "exec": "next dev"
         }
       ]
     },
@@ -129,6 +141,24 @@
     "pre-compile": {
       "name": "pre-compile",
       "description": "Prepare the project for compilation"
+    },
+    "server": {
+      "name": "server",
+      "description": "Starts the Next.js application in production mode",
+      "steps": [
+        {
+          "exec": "next start"
+        }
+      ]
+    },
+    "telemetry": {
+      "name": "telemetry",
+      "description": "Checks the status of Next.js telemetry collection",
+      "steps": [
+        {
+          "exec": "next telemetry"
+        }
+      ]
     },
     "test": {
       "name": "test",

@@ -3,7 +3,7 @@ import { TypeScriptProject } from "projen/lib/typescript";
 
 export class NextEnv extends SourceCode {
   public constructor(project: TypeScriptProject) {
-    super(project, "next-env.d.ts", { readonly: true });
+    super(project, "next-env.d.ts", { readonly: false });
 
     this.line(`/// <reference types="next" />
 /// <reference types="next/image-types/global" />

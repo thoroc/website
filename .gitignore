@@ -50,7 +50,7 @@ junit.xml
 .vercel
 !/next-config.mjs
 !/next-env.d.ts
-!/src/app/global.css
+!/src/app/globals.css
 !/src/app/page.tsx
 !/src/app/layout.tsx
 !/tsconfig.json

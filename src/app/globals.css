@@ -1,11 +1,4 @@
-import { SourceCode } from "projen";
-import { TypeScriptProject } from "projen/lib/typescript";
-
-export class GlobalsCss extends SourceCode {
-  constructor(project: TypeScriptProject) {
-    super(project, "src/app/globals.css", { readonly: false });
-
-    this.line(`@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -30,7 +23,5 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-}`);
   }
 }
