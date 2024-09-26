@@ -18,11 +18,14 @@
 /.projen/files.json linguist-generated
 /.projen/tasks.json linguist-generated
 /LICENSE linguist-generated
+/next-config.mjs linguist-generated
 /next-env.d.ts linguist-generated
-/next.config.mjs linguist-generated
 /package.json linguist-generated
 /pnpm-lock.yaml linguist-generated
 /postcss.config.mjs linguist-generated
+/src/app/global.css linguist-generated
+/src/app/layout.tsx linguist-generated
+/src/app/page.tsx linguist-generated
 /tailwind.config.ts linguist-generated
 /tsconfig.dev.json linguist-generated
 /tsconfig.json linguist-generated

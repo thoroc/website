@@ -24,32 +24,11 @@
     "strictPropertyInitialization": true,
     "stripInternal": true,
     "target": "ES2019",
-    "moduleResolution": "node",
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "allowJs": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+    "moduleResolution": "node"
   },
   "include": [
-    "pages/**/*.ts",
+    "src/**/*.ts",
     "test/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
     ".projenrc.ts",
     "projenrc/**/*.ts"
   ],

@@ -62,9 +62,6 @@
       "steps": [
         {
           "exec": "tsc --build"
-        },
-        {
-          "exec": "next build"
         }
       ]
     },
@@ -74,15 +71,6 @@
       "steps": [
         {
           "exec": "ts-node --project tsconfig.dev.json .projenrc.ts"
-        }
-      ]
-    },
-    "dev": {
-      "name": "dev",
-      "description": "Starts the Next.js application in development mode",
-      "steps": [
-        {
-          "exec": "next dev"
         }
       ]
     },
@@ -103,17 +91,8 @@
       "description": "Runs eslint against the codebase",
       "steps": [
         {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ pages test build-tools projenrc .projenrc.ts",
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ src test build-tools projenrc .projenrc.ts",
           "receiveArgs": true
-        }
-      ]
-    },
-    "export": {
-      "name": "export",
-      "description": "Exports the application for production deployment",
-      "steps": [
-        {
-          "exec": "next export"
         }
       ]
     },
@@ -150,24 +129,6 @@
     "pre-compile": {
       "name": "pre-compile",
       "description": "Prepare the project for compilation"
-    },
-    "server": {
-      "name": "server",
-      "description": "Starts the Next.js application in production mode",
-      "steps": [
-        {
-          "exec": "next start"
-        }
-      ]
-    },
-    "telemetry": {
-      "name": "telemetry",
-      "description": "Checks the status of Next.js telemetry collection",
-      "steps": [
-        {
-          "exec": "next telemetry"
-        }
-      ]
     },
     "test": {
       "name": "test",

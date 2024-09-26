@@ -1,6 +1,8 @@
 import { Component } from "projen";
 import { TypeScriptProject } from "projen/lib/typescript";
-import { AddOverride, CreateSourceCode } from "./utils";
+import { AddOverride } from "../utils";
+import { NextConfig, NextEnv, GlobalCss, Page, Layout } from "./files";
+import { TsConfig } from "./tsconfig";
 
 export class NextJs extends Component {
   project: TypeScriptProject;
@@ -24,6 +26,8 @@ export class NextJs extends Component {
   }
 
   public preSynthesize(): void {
+    this.project.tryRemoveFile("tsconfig.json");
+
     const tsconfig = {
       compilerOptions: {
         lib: ["ES2019"],
@@ -32,7 +36,7 @@ export class NextJs extends Component {
         moduleResolution: "node",
       },
     };
-    AddOverride(this.project, "tsconfig.json", tsconfig);
+    // AddOverride(this.project, "tsconfig.json", tsconfig);
     AddOverride(this.project, "tsconfig.dev.json", tsconfig);
 
     this.project
@@ -46,17 +50,20 @@ export class NextJs extends Component {
     AddOverride(this.project, ".eslintrc.json", eslintConfig);
 
     // next.config.mjs
-    CreateSourceCode(this.project, "next.config.mjs", [
-      "/** @type {import('next').NextConfig} */",
-      "const nextConfig = {};",
-      "",
-      "export default nextConfig;",
-    ]);
+    new NextConfig(this.project);
 
     // next-env.d.ts
-    CreateSourceCode(this.project, "next-env.d.ts", [
-      "/// <reference types='next' />",
-      "/// <reference types='next/types/global' />",
-    ]);
+    new NextEnv(this.project);
+
+    // source code
+    new GlobalCss(this.project);
+    new Page(this.project);
+    new Layout(this.project);
+
+    new TsConfig(this.project);
+
+    this.project.gitignore.exclude("/.next/");
+    this.project.gitignore.exclude("/out/");
+    this.project.gitignore.exclude("next-env.d.ts");
   }
 }

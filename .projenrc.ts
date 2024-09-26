@@ -1,5 +1,6 @@
 import { web } from "projen";
 import { NodePackageManager } from "projen/lib/javascript";
+import { TypeScriptAppProject } from "projen/lib/typescript";
 import {
   NextJs,
   AddOverride,
@@ -9,7 +10,7 @@ import {
   TailWind,
 } from "./projenrc";
 
-const project = new web.NextJsTypeScriptProject({
+const project = new TypeScriptAppProject({
   defaultReleaseBranch: "main",
   name: "website",
   projenrcTs: true,
@@ -18,7 +19,6 @@ const project = new web.NextJsTypeScriptProject({
   eslint: true,
   prettier: true,
   mergify: false,
-  tailwind: false,
 
   deps: [
     "@mui/material",
@@ -26,7 +26,6 @@ const project = new web.NextJsTypeScriptProject({
     "@emotion/styled",
     "@fontsource/roboto",
     "@mui/icons-material",
-    "@vercel/speed-insights",
   ],
   description: "Personal website",
   // packageName: undefined,  /* The "name" in package.json. */
@@ -49,32 +48,13 @@ const deleteTsconfigOptions = ["compilerOptions.rootDir"];
 
 DeleteOverride(project, "tsconfig.json", deleteTsconfigOptions);
 
-// const TARGET = "ES2019";
-// const MODULE = "CommonJS";
-// const MODULE_RESOLUTION = "node";
-
-// const tsConfig = project.tryFindObjectFile("tsconfig.json");
-
-// for (const [key, value] of Object.entries(compilerOptions)) {
-//   tsConfig?.addOverride(`compilerOptions.${key}`, value);
-// }
-
-// tsConfig?.addDeletionOverride("compilerOptions.rootDir");
-
-// const tsConfigDev = project.tryFindObjectFile("tsconfig.dev.json");
-// tsConfigDev?.addOverride("compilerOptions.lib", [TARGET]);
-// tsConfigDev?.addOverride("compilerOptions.target", TARGET);
-// tsConfigDev?.addOverride("compilerOptions.module", MODULE);
-
 const packageJson = project.tryFindObjectFile("package.json");
 packageJson?.addOverride("engines", { node: ">=20" });
 // packageJson?.addOverride("type", "module");
 
 console.log(project instanceof web.NextJsTypeScriptProject);
 
-const vercel = new Vercel(project);
-vercel.synthesize();
-
+new Vercel(project);
 new NextJs(project);
 new TailWind(project);
 

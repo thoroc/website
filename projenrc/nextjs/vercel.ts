@@ -1,10 +1,16 @@
-import { Component, JsonFile, web } from "projen";
+import { Component, JsonFile } from "projen";
+import { TypeScriptProject } from "projen/lib/typescript";
 
 export class Vercel extends Component {
-  constructor(project: web.NextJsTypeScriptProject) {
+  project: TypeScriptProject;
+
+  constructor(project: TypeScriptProject) {
     super(project);
 
+    project.addDeps("@vercel/speed-insights");
     project.addDevDeps("vercel", "@vercel/next");
+
+    this.project = project;
   }
 
   public preSynthesize(): void {
@@ -15,5 +21,7 @@ export class Vercel extends Component {
       installCommand: "pnpm run install",
     };
     new JsonFile(this.project, "vercel.json", { obj: config });
+
+    this.project.gitignore.exclude(".vercel");
   }
 }
