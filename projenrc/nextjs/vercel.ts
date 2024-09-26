@@ -20,7 +20,10 @@ export class Vercel extends Component {
       framework: "nextjs",
       installCommand: "pnpm run install",
     };
-    new JsonFile(this.project, "vercel.json", { obj: config });
+    new JsonFile(this.project, "vercel.json", {
+      obj: config,
+      marker: false,
+    });
 
     this.project.gitignore.exclude(".vercel");
   }
