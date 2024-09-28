@@ -109,6 +109,10 @@
       "type": "build"
     },
     {
+      "name": "@emotion/cache",
+      "type": "runtime"
+    },
+    {
       "name": "@emotion/react",
       "type": "runtime"
     },
@@ -129,11 +133,19 @@
       "type": "runtime"
     },
     {
+      "name": "@mui/material-nextjs",
+      "type": "runtime"
+    },
+    {
       "name": "@vercel/speed-insights",
       "type": "runtime"
     },
     {
       "name": "next",
+      "type": "runtime"
+    },
+    {
+      "name": "next-themes",
       "type": "runtime"
     },
     {

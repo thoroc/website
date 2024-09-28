@@ -23,14 +23,10 @@ export class TsConfig extends TypescriptConfig {
         isolatedModules: true,
         jsx: TypeScriptJsxMode.PRESERVE,
         incremental: true,
-        // plugins: [
-        //   {
-        //     name: "next",
-        //   },
-        // ],
-        // paths: {
-        //   "@components/*": ["./src/components/*"],
-        // },
+        baseUrl: ".",
+        paths: {
+          "@/*": ["./src/*"],
+        },
       },
     });
 

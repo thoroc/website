@@ -9,7 +9,6 @@
     "dev": "npx projen dev",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
-    "install:ci": "npx projen install:ci",
     "package": "npx projen package",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
@@ -51,13 +50,16 @@
     "vercel": "^37.5.4"
   },
   "dependencies": {
+    "@emotion/cache": "^11.13.1",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@fontsource/roboto": "^5.1.0",
     "@mui/icons-material": "^6.1.1",
     "@mui/material": "^6.1.1",
+    "@mui/material-nextjs": "^6.1.1",
     "@vercel/speed-insights": "^1.0.12",
     "next": "^14.2.13",
+    "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
