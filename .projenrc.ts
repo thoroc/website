@@ -9,19 +9,25 @@ import {
   DeleteOverride,
   TailWind,
   Renovate,
+  Github,
 } from "./projenrc";
+
+const pnpmVersion = "9";
 
 const project = new TypeScriptAppProject({
   defaultReleaseBranch: "main",
   name: "website",
+  description: "Personal website",
   projenrcTs: true,
   packageManager: NodePackageManager.PNPM,
   jest: true,
   eslint: true,
   prettier: true,
   mergify: false,
-
-  description: "Personal website",
+  // we will be using a custom ci pipeline for the linting and testing
+  // we delegate the upgrade task to renovate
+  github: false,
+  pnpmVersion,
 });
 
 const addTsconfigOptions: addOverrideOptions = {
@@ -59,5 +65,6 @@ new Vercel(project);
 new NextJs(project);
 new TailWind(project);
 new Renovate(project);
+new Github(project, { pnpmVersion });
 
 project.synth();
