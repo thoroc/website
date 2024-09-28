@@ -27,9 +27,9 @@ export class TsConfig extends TypescriptConfig {
         //     name: "next",
         //   },
         // ],
-        paths: {
-          "@components/*": ["./src/components/*"],
-        },
+        // paths: {
+        //   "@components/*": ["./src/components/*"],
+        // },
       },
     });
 
@@ -42,6 +42,13 @@ export class TsConfig extends TypescriptConfig {
   }
 
   public postSynthesize(): void {
+    this.project
+      .tryFindObjectFile("tsconfig.json")
+      ?.addOverride("compilerOptions.plugins", [
+        {
+          name: "next",
+        },
+      ]);
     fs.chmodSync("tsconfig.json", 0o775);
   }
 }
