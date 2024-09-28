@@ -29,8 +29,6 @@ const project = new TypeScriptAppProject({
     "@mui/icons-material",
   ],
   description: "Personal website",
-  // packageName: undefined,  /* The "name" in package.json. */
-  // tailwind: true,          /* Setup Tailwind CSS as a PostCSS plugin. */
 });
 
 const addTsconfigOptions: addOverrideOptions = {
@@ -40,9 +38,18 @@ const addTsconfigOptions: addOverrideOptions = {
     module: "CommonJS",
     moduleResolution: "node",
   },
+  include: [
+    "src/**/*.tsx",
+    "src/**/*.ts",
+    "test/**/*.ts",
+    "test/**/*.tsx",
+    ".projenrc.ts",
+    "projenrc/**/*.ts",
+    "next-env.d.ts",
+  ],
 };
 
-AddOverride(project, "tsconfig.json", addTsconfigOptions);
+// AddOverride(project, "tsconfig.json", addTsconfigOptions);
 AddOverride(project, "tsconfig.dev.json", addTsconfigOptions);
 
 const deleteTsconfigOptions = ["compilerOptions.rootDir"];

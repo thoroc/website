@@ -27,10 +27,13 @@
     "moduleResolution": "node"
   },
   "include": [
+    "src/**/*.tsx",
     "src/**/*.ts",
     "test/**/*.ts",
+    "test/**/*.tsx",
     ".projenrc.ts",
-    "projenrc/**/*.ts"
+    "projenrc/**/*.ts",
+    "next-env.d.ts"
   ],
   "exclude": [
     "node_modules"

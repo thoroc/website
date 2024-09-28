@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import { JsonPatch } from "projen";
 import {
   TypescriptConfig,
   TypeScriptJsxMode,
@@ -41,14 +42,16 @@ export class TsConfig extends TypescriptConfig {
     this.addExclude("node_modules");
   }
 
+  public preSynthesize(): void {}
+
   public postSynthesize(): void {
-    this.project
-      .tryFindObjectFile("tsconfig.json")
-      ?.addOverride("compilerOptions.plugins", [
+    this.project.tryFindObjectFile("tsconfig.json")?.patch(
+      JsonPatch.add("compilerOptions.plugins", [
         {
           name: "next",
         },
-      ]);
+      ]),
+    );
     fs.chmodSync("tsconfig.json", 0o775);
   }
 }
