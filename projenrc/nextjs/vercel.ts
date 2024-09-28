@@ -15,7 +15,7 @@ export class Vercel extends Component {
 
   public preSynthesize(): void {
     const config = {
-      buildCommand: "pnpm run build",
+      buildCommand: "pnpm run compile",
       devCommand: "pnpm run dev",
       framework: "nextjs",
       installCommand: "pnpm install",
