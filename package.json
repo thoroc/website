@@ -9,6 +9,7 @@
     "dev": "npx projen dev",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
+    "install:ci": "npx projen install:ci",
     "package": "npx projen package",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
