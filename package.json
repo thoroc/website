@@ -32,7 +32,7 @@
     "@vercel/next": "^4.3.10",
     "autoprefixer": "^10.4.20",
     "constructs": "^10.0.0",
-    "eslint": "^8",
+    "eslint": "^9.0.0",
     "eslint-config-next": "^14.2.13",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.3",
