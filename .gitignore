@@ -59,3 +59,4 @@ junit.xml
 next-env.d.ts
 !/tailwind.config.ts
 !/postcss.config.mjs
+!/renovate.json

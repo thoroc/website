@@ -8,6 +8,7 @@ import {
   addOverrideOptions,
   DeleteOverride,
   TailWind,
+  Renovate,
 } from "./projenrc";
 
 const project = new TypeScriptAppProject({
@@ -57,5 +58,6 @@ console.log(project instanceof web.NextJsTypeScriptProject);
 new Vercel(project);
 new NextJs(project);
 new TailWind(project);
+new Renovate(project);
 
 project.synth();

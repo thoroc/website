@@ -16,6 +16,7 @@
     ".projen/tasks.json",
     "LICENSE",
     "postcss.config.mjs",
+    "renovate.json",
     "tailwind.config.ts",
     "tsconfig.dev.json",
     "tsconfig.json",

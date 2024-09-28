@@ -23,6 +23,7 @@
 /package.json linguist-generated
 /pnpm-lock.yaml linguist-generated
 /postcss.config.mjs linguist-generated
+/renovate.json linguist-generated
 /src/app/globals.css linguist-generated
 /src/app/layout.tsx linguist-generated
 /src/app/page.tsx linguist-generated
