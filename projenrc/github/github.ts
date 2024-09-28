@@ -15,6 +15,8 @@ export class Github extends Component {
   constructor(project: TypeScriptProject, options: GithubOptions) {
     super(project);
 
+    // project.addDeps("simple-git");
+
     const githubComponent = new github.GitHub(project, {
       mergify: false,
       pullRequestLint: false,

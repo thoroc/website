@@ -1,7 +1,11 @@
 import { GitHub, GithubWorkflow } from "projen/lib/github";
 import { JobPermission, JobStep } from "projen/lib/github/workflows-model";
+import { TypeScriptProject } from "projen/lib/typescript";
+// import { simpleGit } from "simple-git";
 
 export class Semver extends GithubWorkflow {
+  project: TypeScriptProject;
+
   constructor(github: GitHub) {
     super(github as GitHub, "semver");
 
@@ -58,5 +62,25 @@ export class Semver extends GithubWorkflow {
         pushTag,
       ],
     });
+
+    this.project = github.project as unknown as TypeScriptProject;
+  }
+
+  // not working
+  preSynthesize() {
+    //   const packageVersion = await simpleGit().raw([
+    //     "describe",
+    //     "--abbrev=0",
+    //     "--tags",
+    //   ]);
+    //   console.log(
+    //     `package version: ${JSON.stringify(packageVersion.replace("\n", ""))}`,
+    //   );
+    const packageJson = this.project.tryFindObjectFile("package.json");
+    packageJson?.addOverride(
+      "version",
+      "0.0.2",
+      // JSON.stringify(packageVersion.replace("\n", "")),
+    );
   }
 }
