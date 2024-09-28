@@ -1,3 +1,3 @@
-export * from "./global-css";
-export * from "./page";
-export * from "./layout";
+export * from "./app/app";
+export * from "./components/components";
+export * from "./theme";

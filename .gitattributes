@@ -24,9 +24,11 @@
 /pnpm-lock.yaml linguist-generated
 /postcss.config.mjs linguist-generated
 /renovate.json linguist-generated
-/src/app/globals.css linguist-generated
+/src/app/about/page.tsx linguist-generated
 /src/app/layout.tsx linguist-generated
 /src/app/page.tsx linguist-generated
+/src/components/Copyright.tsx linguist-generated
+/src/components/ProTip.tsx linguist-generated
 /tailwind.config.ts linguist-generated
 /tsconfig.dev.json linguist-generated
 /tsconfig.json linguist-generated

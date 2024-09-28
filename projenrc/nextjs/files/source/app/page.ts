@@ -1,4 +1,11 @@
-import * as React from 'react';
+import { SourceCode } from "projen";
+import { TypeScriptProject } from "projen/lib/typescript";
+
+export class Page extends SourceCode {
+  public constructor(project: TypeScriptProject) {
+    super(project, "src/app/page.tsx", { readonly: false });
+
+    this.line(`import * as React from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -30,4 +37,6 @@ export default function Home() {
       </Box>
     </Container>
   );
+}`);
+  }
 }

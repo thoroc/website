@@ -1,7 +1,8 @@
 import { Component } from "projen";
 import { TypeScriptProject } from "projen/lib/typescript";
 import { AddOverride } from "../utils";
-import { NextConfig, NextEnv, GlobalsCss, Page, Layout } from "./files";
+import { DefaultApp } from "./default-app";
+import { MaterialUI } from "./material-ui";
 import { TsConfig } from "./tsconfig";
 
 export class NextJs extends Component {
@@ -49,18 +50,12 @@ export class NextJs extends Component {
 
     AddOverride(this.project, ".eslintrc.json", eslintConfig);
 
-    // next.config.mjs
-    new NextConfig(this.project);
-
-    // next-env.d.ts
-    new NextEnv(this.project);
-
     // source code
-    new GlobalsCss(this.project);
-    new Page(this.project);
-    new Layout(this.project);
-
     new TsConfig(this.project);
+    new MaterialUI(this.project);
+
+    // default app source code
+    new DefaultApp(this.project);
 
     this.project.gitignore.exclude("/.next/");
     this.project.gitignore.exclude("/out/");
