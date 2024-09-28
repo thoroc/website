@@ -18,7 +18,7 @@ export class Vercel extends Component {
       buildCommand: "pnpm run compile",
       devCommand: "pnpm run dev",
       framework: "nextjs",
-      installCommand: "pnpm install",
+      installCommand: "pnpm install:ci",
     };
     new JsonFile(this.project, "vercel.json", {
       obj: config,
