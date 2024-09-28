@@ -9,6 +9,7 @@ export class MaterialUI extends Component {
       "@emotion/cache",
       "@emotion/react",
       "@emotion/styled",
+      "@fontsource/roboto",
       "@mui/icons-material",
       "@mui/material",
       "@mui/material-nextjs",

@@ -21,13 +21,6 @@ const project = new TypeScriptAppProject({
   prettier: true,
   mergify: false,
 
-  deps: [
-    "@mui/material",
-    "@emotion/react",
-    "@emotion/styled",
-    "@fontsource/roboto",
-    "@mui/icons-material",
-  ],
   description: "Personal website",
 });
 

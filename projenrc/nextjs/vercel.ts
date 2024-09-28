@@ -10,6 +10,10 @@ export class Vercel extends Component {
     project.addDeps("@vercel/speed-insights");
     project.addDevDeps("vercel", "@vercel/next");
 
+    project
+      .tryFindObjectFile("package.json")
+      ?.addOverride("scripts.install:ci", "npx projen install:ci");
+
     this.project = project;
   }
 
