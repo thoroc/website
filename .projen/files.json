@@ -4,6 +4,7 @@
     ".gitattributes",
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/workflows/ci.yml",
+    ".github/workflows/semver.yml",
     ".gitignore",
     ".npmignore",
     ".npmrc",

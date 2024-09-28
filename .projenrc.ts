@@ -1,4 +1,3 @@
-import { web } from "projen";
 import { NodePackageManager } from "projen/lib/javascript";
 import { TypeScriptAppProject } from "projen/lib/typescript";
 import {
@@ -57,9 +56,6 @@ DeleteOverride(project, "tsconfig.json", deleteTsconfigOptions);
 
 const packageJson = project.tryFindObjectFile("package.json");
 packageJson?.addOverride("engines", { node: ">=20" });
-// packageJson?.addOverride("type", "module");
-
-console.log(project instanceof web.NextJsTypeScriptProject);
 
 new Vercel(project);
 new NextJs(project);

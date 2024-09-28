@@ -42,6 +42,7 @@ junit.xml
 /dist/
 !/.eslintrc.json
 !/.github/workflows/ci.yml
+!/.github/workflows/semver.yml
 !/.github/PULL_REQUEST_TEMPLATE.md
 !/.projenrc.ts
 !/vercel.json

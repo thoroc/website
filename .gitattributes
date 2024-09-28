@@ -6,6 +6,7 @@
 /.gitattributes linguist-generated
 /.github/PULL_REQUEST_TEMPLATE.md linguist-generated
 /.github/workflows/ci.yml linguist-generated
+/.github/workflows/semver.yml linguist-generated
 /.gitignore linguist-generated
 /.npmignore linguist-generated
 /.npmrc linguist-generated
