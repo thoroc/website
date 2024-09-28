@@ -11,12 +11,14 @@ export interface RenovateOptions {
   schema: string;
   extends: string[];
   packageRules: PackageRule[];
+  labels?: string[];
 }
 
 export class Renovate extends Component {
   project: TypeScriptProject;
   public readonly schema: string;
   public readonly extends: string[];
+  public readonly labels: string[];
   public packageRules: PackageRule[];
 
   public constructor(project: TypeScriptProject, options?: RenovateOptions) {
@@ -32,8 +34,13 @@ export class Renovate extends Component {
       },
       { matchDepTypes: ["devDependencies"], automerge: true },
     ];
+    this.labels = options?.labels ?? ["renovate"];
 
     this.project = project;
+  }
+
+  public addLabel(label: string): void {
+    this.labels.push(label);
   }
 
   public addPackageRule(rule: PackageRule): void {
@@ -45,6 +52,7 @@ export class Renovate extends Component {
       $schema: this.schema,
       extends: this.extends,
       packageRules: this.packageRules,
+      labels: this.labels,
     };
     new JsonFile(this.project, "renovate.json", { obj: config, marker: false });
   }

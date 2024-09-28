@@ -17,5 +17,8 @@
       ],
       "automerge": true
     }
+  ],
+  "labels": [
+    "renovate"
   ]
 }
