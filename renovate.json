@@ -3,19 +3,31 @@
   "extends": [
     "config:recommended"
   ],
+  "labels": [
+    "dependencies",
+    "renovate"
+  ],
+  "autoApprove": true,
+  "automerge": true,
+  "automergeStrategy": "squash",
+  "automergeType": "pr",
   "packageRules": [
     {
       "matchUpdateTypes": [
         "minor",
-        "patch"
+        "patch",
+        "pin",
+        "digest"
       ],
-      "automerge": true
+      "automerge": true,
+      "automergeStrategy": "squash"
     },
     {
       "matchDepTypes": [
         "devDependencies"
       ],
-      "automerge": true
+      "automerge": true,
+      "automergeStrategy": "squash"
     }
   ]
 }
