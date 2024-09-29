@@ -15,6 +15,7 @@
     "LICENSE",
     "postcss.config.mjs",
     "renovate.json",
+    "src/app/about/page.tsx",
     "tailwind.config.ts",
     "tsconfig.dev.json",
     "tsconfig.json",

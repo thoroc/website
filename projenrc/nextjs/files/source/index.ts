@@ -1,3 +1,3 @@
-export * from "./app/app";
-export * from "./components/components";
+export * from "./app";
+export * from "./components";
 export * from "./theme";
