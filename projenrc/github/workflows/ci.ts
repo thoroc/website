@@ -1,6 +1,6 @@
 import { GitHub, GithubWorkflow } from 'projen/lib/github';
 import { JobPermission, JobStep } from 'projen/lib/github/workflows-model';
-import { ActionsCheckout, ActionSetupNode, PnpmActionSetup, ActionsVerifyChangedFiles } from './jobs';
+import { ActionsCheckout, ActionSetupNode, PnpmActionSetup, ActionsVerifyChangedFiles } from './steps';
 
 export class CiPipeline extends GithubWorkflow {
   constructor(github: GitHub) {
