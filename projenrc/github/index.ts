@@ -19,7 +19,7 @@ export class Github extends Component {
       pullRequestLint: false,
     });
 
-    new CiPipeline(githubComponent, options.pnpmVersion);
+    new CiPipeline(githubComponent);
 
     if (options.templates?.pullRequest ?? true) {
       new PullRequestTemplate(project);

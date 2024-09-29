@@ -2,7 +2,7 @@ import { GitHub, GithubWorkflow } from 'projen/lib/github';
 import { JobPermission, JobStep } from 'projen/lib/github/workflows-model';
 
 export class CiPipeline extends GithubWorkflow {
-  constructor(github: GitHub, pnpmVersion: string) {
+  constructor(github: GitHub) {
     super(github as GitHub, 'ci');
 
     this.on({
@@ -19,7 +19,8 @@ export class CiPipeline extends GithubWorkflow {
       name: 'Setup pnpm',
       uses: 'pnpm/action-setup@v4',
       with: {
-        version: pnpmVersion,
+        // conflict with the version specified in the package.json
+        // version: pnpmVersion,
         run_install: false,
       },
     };
