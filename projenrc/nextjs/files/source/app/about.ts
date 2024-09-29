@@ -3,9 +3,7 @@ import { TypeScriptProject } from "projen/lib/typescript";
 
 export class AboutPage extends SourceCode {
   public constructor(project: TypeScriptProject) {
-    super(project, "src/app/about/page.tsx", {
-      readonly: false,
-    });
+    super(project, "src/app/about/page.tsx");
 
     this.line(`import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";

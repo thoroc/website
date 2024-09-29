@@ -28,6 +28,8 @@ const project = new TypeScriptAppProject({
   // we delegate the upgrade task to renovate
   github: false,
   pnpmVersion,
+  // we will be using sample code lifted from the nextjs example
+  sampleCode: false,
 });
 
 const addTsconfigOptions: addOverrideOptions = {
