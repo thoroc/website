@@ -1,5 +1,10 @@
 import { web } from "projen";
-import { NodePackageManager } from "projen/lib/javascript";
+import {
+  NodePackageManager,
+  ProseWrap,
+  QuoteProps,
+  TrailingComma,
+} from "projen/lib/javascript";
 import { TypeScriptAppProject } from "projen/lib/typescript";
 import {
   NextJs,
@@ -7,7 +12,6 @@ import {
   Vercel,
   addOverrideOptions,
   DeleteOverride,
-  TailWind,
   Renovate,
   Github,
 } from "./projenrc";
@@ -23,6 +27,27 @@ const project = new TypeScriptAppProject({
   jest: true,
   eslint: true,
   prettier: true,
+  prettierOptions: {
+    settings: {
+      proseWrap: ProseWrap.NEVER,
+      semi: true,
+      singleQuote: true,
+      trailingComma: TrailingComma.ALL,
+      printWidth: 120,
+    },
+    overrides: [
+      {
+        files: ["*.md"],
+        options: {
+          printWidth: 120,
+          proseWrap: ProseWrap.ALWAYS,
+          quoteProps: QuoteProps.ASNEEDED,
+          semi: true,
+          singleQuote: false,
+        },
+      },
+    ],
+  },
   mergify: false,
   // we will be using a custom ci pipeline for the linting and testing
   // we delegate the upgrade task to renovate
@@ -65,7 +90,6 @@ console.log(project instanceof web.NextJsTypeScriptProject);
 
 new Vercel(project);
 new NextJs(project);
-new TailWind(project);
 new Renovate(project);
 new Github(project, { pnpmVersion });
 

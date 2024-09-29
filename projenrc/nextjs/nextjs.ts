@@ -1,14 +1,29 @@
-import { Component } from "projen";
+import { Component, SampleFile } from "projen";
 import { TypeScriptProject } from "projen/lib/typescript";
 import { AddOverride } from "../utils";
-import { DefaultApp } from "./default-app";
-import { MaterialUI } from "./material-ui";
 import { TsConfig } from "./tsconfig";
+import { readFileSync } from "fs";
+import { resolve } from "path";
+
+export interface NextJsOptions {
+  /**
+   * Whether to include Tailwind CSS.
+   * @default true
+   */
+  readonly tailwind?: boolean;
+  /**
+   * Whether to include Material UI.
+   * @default true
+   */
+  readonly materialUi?: boolean;
+}
 
 export class NextJs extends Component {
   project: TypeScriptProject;
+  readonly tailwind: boolean;
+  readonly materialUi: boolean;
 
-  constructor(project: TypeScriptProject) {
+  constructor(project: TypeScriptProject, options?: NextJsOptions) {
     super(project);
 
     project.addDeps("next", "react", "react-dom");
@@ -24,6 +39,25 @@ export class NextJs extends Component {
     );
 
     this.project = project;
+    this.tailwind = options?.tailwind ?? true;
+    this.materialUi = options?.materialUi ?? true;
+
+    if (this.tailwind) {
+      project.addDevDeps("tailwindcss", "autoprefixer", "postcss");
+    }
+
+    if (this.materialUi) {
+      project.addDeps(
+        "@emotion/cache",
+        "@emotion/react",
+        "@emotion/styled",
+        "@fontsource/roboto",
+        "@mui/icons-material",
+        "@mui/material",
+        "@mui/material-nextjs",
+        "next-themes",
+      );
+    }
   }
 
   public preSynthesize(): void {
@@ -52,10 +86,6 @@ export class NextJs extends Component {
 
     // source code
     new TsConfig(this.project);
-    new MaterialUI(this.project);
-
-    // default app source code
-    new DefaultApp(this.project);
 
     this.project.gitignore.exclude("/.next/");
     this.project.gitignore.exclude("/out/");
@@ -80,5 +110,31 @@ export class NextJs extends Component {
         { exec: "tsc --build" },
         { exec: "next build" },
       ]);
+
+    // default app source code
+    const sampleFiles = [
+      "src/app/layout.tsx",
+      "src/app/page.tsx",
+      "src/app/about/page.tsx",
+      "src/components/Copyright.tsx",
+      "src/components/ProTip.tsx",
+      "src/theme.ts",
+      "next-config.mjs",
+      "next-env.d.ts",
+    ];
+
+    if (this.tailwind) {
+      sampleFiles.push("postcss.config.mjs");
+      sampleFiles.push("tailwind.config.ts");
+    }
+
+    sampleFiles.forEach((filePath) => {
+      new SampleFile(this.project, filePath, {
+        contents: readFileSync(
+          resolve(__dirname, `assets/${filePath}`),
+          "utf-8",
+        ),
+      });
+    });
   }
 }
