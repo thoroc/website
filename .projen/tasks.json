@@ -190,13 +190,13 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/node,@types/react,@types/react-dom,@vercel/next,autoprefixer,eslint,eslint-config-next,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,eslint-plugin-react,jest,postcss,prettier,projen,tailwindcss,ts-jest,ts-node,typescript,vercel,@emotion/cache,@emotion/react,@emotion/styled,@fontsource/roboto,@mui/icons-material,@mui/material,@mui/material-nextjs,@vercel/speed-insights,next,next-themes,react,react-dom"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/node,@types/react,@types/react-dom,@vercel/next,autoprefixer,eslint,eslint-config-next,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,eslint-plugin-react,jest,postcss,prettier,projen,tailwindcss,ts-jest,ts-node,typescript,vercel,@emotion/cache,@emotion/react,@emotion/styled,@fontsource/roboto,@mui/icons-material,@mui/material,@mui/material-nextjs,@vercel/speed-insights,lorem-ipsum,next,next-themes,react,react-dom"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @types/jest @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser @vercel/next autoprefixer constructs eslint eslint-config-next eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint-plugin-react jest jest-junit postcss prettier projen tailwindcss ts-jest ts-node typescript vercel @emotion/cache @emotion/react @emotion/styled @fontsource/roboto @mui/icons-material @mui/material @mui/material-nextjs @vercel/speed-insights next next-themes react react-dom"
+          "exec": "pnpm update @types/jest @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser @vercel/next autoprefixer constructs eslint eslint-config-next eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint-plugin-react jest jest-junit postcss prettier projen tailwindcss ts-jest ts-node typescript vercel @emotion/cache @emotion/react @emotion/styled @fontsource/roboto @mui/icons-material @mui/material @mui/material-nextjs @vercel/speed-insights lorem-ipsum next next-themes react react-dom"
         },
         {
           "exec": "npx projen"
