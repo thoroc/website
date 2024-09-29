@@ -2,7 +2,12 @@ import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import MuiLink from '@mui/material/Link';
 
-const Copyright = () => {
+export interface CopyrightProps {
+  website?: string;
+  url?: string;
+}
+
+const Copyright = (props: CopyrightProps) => {
   return (
     <Typography
       variant="body2"
@@ -12,8 +17,8 @@ const Copyright = () => {
       }}
     >
       {'Copyright © '}
-      <MuiLink color="inherit" href="https://mui.com/">
-        Your Website
+      <MuiLink color="inherit" href={props.url ?? 'https://mui.com/'}>
+        {props.website ?? 'Material-UI'}
       </MuiLink>{' '}
       {new Date().getFullYear()}.
     </Typography>

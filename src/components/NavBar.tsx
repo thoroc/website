@@ -1,16 +1,18 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import NextLink from 'next/link';
 
 const navItems = {
-  home: { label: "Home", path: "/" },
-  about: { label: "About", path: "/about" },
+  home: { label: 'Home', path: '/' },
+  about: { label: 'About', path: '/about' },
 };
 
 interface ElevationScrollProps {
+  title: string;
   children?: React.ReactElement<any>;
 }
 
@@ -31,11 +33,11 @@ const ElevateAppBar = (props: ElevationScrollProps) => {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" component="div">
-              Scroll to elevate App bar
+              {props.title}
             </Typography>
-            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
               {Object.entries(navItems).map(([key, { label, path }]) => (
-                <Button key={key} sx={{ color: "#fff" }} href={path}>
+                <Button key={key} sx={{ color: '#fff' }} component={NextLink} href={path}>
                   {label}
                 </Button>
               ))}
