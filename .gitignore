@@ -47,13 +47,6 @@ junit.xml
 !/vercel.json
 .vercel
 !/tsconfig.json
-!/next-config.mjs
-!/next-env.d.ts
-!/src/app/layout.tsx
-!/src/app/page.tsx
-!/src/app/about/page.tsx
-!/src/components/Copyright.tsx
-!/src/components/ProTip.tsx
 /.next/
 /out/
 next-env.d.ts

@@ -1,11 +1,4 @@
-import { SourceCode } from "projen";
-import { TypeScriptProject } from "projen/lib/typescript";
-
-export class AboutPage extends SourceCode {
-  public constructor(project: TypeScriptProject) {
-    super(project, "src/app/about/page.tsx");
-
-    this.line(`import Box from "@mui/material/Box";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -14,22 +7,22 @@ import * as React from "react";
 import Copyright from "@/components/Copyright";
 import ProTip from "@/components/ProTip";
 
-export default function About() {
+const About = () => {
   return (
     <Container maxWidth="lg">
       <Box
         sx={{
           my: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
           Material UI - Next.js example in TypeScript
         </Typography>
-        <Box sx={{ maxWidth: 'sm' }}>
+        <Box sx={{ maxWidth: "sm" }}>
           <Button variant="contained" component={NextLink} href="/">
             Go to the home page
           </Button>
@@ -39,6 +32,6 @@ export default function About() {
       </Box>
     </Container>
   );
-}`);
-  }
-}
+};
+
+export default About;
