@@ -1,5 +1,6 @@
 import { GitHub, GithubWorkflow } from 'projen/lib/github';
 import { JobPermission, JobStep } from 'projen/lib/github/workflows-model';
+import { ActionsCheckout, ActionSetupNode, PnpmActionSetup, ActionsVerifyChangedFiles } from './jobs';
 
 export class CiPipeline extends GithubWorkflow {
   constructor(github: GitHub) {
@@ -9,39 +10,6 @@ export class CiPipeline extends GithubWorkflow {
       push: { branches: ['main'] },
       pullRequest: { branches: ['main'] },
     });
-
-    const checkoutCode: JobStep = {
-      name: 'Checkout code',
-      uses: 'actions/checkout@v4',
-    };
-
-    const setupNode: JobStep = {
-      name: 'Setup pnpm',
-      uses: 'pnpm/action-setup@v4',
-      with: {
-        // conflict with the version specified in the package.json
-        // version: pnpmVersion,
-        run_install: false,
-      },
-    };
-
-    const installNodeJs: JobStep = {
-      name: 'Install Node.js',
-      uses: 'actions/setup-node@v4',
-      with: {
-        'node-version': 20,
-        cache: 'pnpm',
-      },
-    };
-
-    const affected: JobStep = {
-      name: 'Find affected files',
-      uses: 'tj-actions/verify-changed-files@v20',
-      id: 'affected',
-      with: {
-        files: '{src,test}/**/*{ts,tsx}',
-      },
-    };
 
     const installDeps: JobStep = {
       name: 'Install dependencies',
@@ -64,7 +32,7 @@ export class CiPipeline extends GithubWorkflow {
     this.addJob('build', {
       runsOn: ['ubuntu-latest'],
       permissions: { contents: JobPermission.READ },
-      steps: [checkoutCode, setupNode, installNodeJs, affected, installDeps, lint, test],
+      steps: [ActionsCheckout, PnpmActionSetup, ActionSetupNode, ActionsVerifyChangedFiles, installDeps, lint, test],
     });
   }
 }
