@@ -141,6 +141,10 @@
       "type": "runtime"
     },
     {
+      "name": "lorem-ipsum",
+      "type": "runtime"
+    },
+    {
       "name": "next",
       "type": "runtime"
     },
