@@ -1,7 +1,6 @@
 import { Component, SampleFile } from "projen";
 import { TypeScriptProject } from "projen/lib/typescript";
 import { AddOverride } from "../utils";
-import { MaterialUI } from "./material-ui";
 import { TsConfig } from "./tsconfig";
 import { readFileSync } from "fs";
 import { resolve } from "path";
