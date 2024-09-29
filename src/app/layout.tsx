@@ -5,6 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import ElevatedAppBar from '@/components/NavBar';
 import * as React from 'react';
 import theme from '@/theme';
+import Copyright from '@/components/Copyright';
 
 const RootLayout = (props: { children: React.ReactNode }) => {
   return (
@@ -15,8 +16,9 @@ const RootLayout = (props: { children: React.ReactNode }) => {
           <ThemeProvider theme={theme}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
-            <ElevatedAppBar />
+            <ElevatedAppBar title="Russel-Roche" />
             {props.children}
+            <Copyright website="Russell-Roche" url="http://localhost:3000" />
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

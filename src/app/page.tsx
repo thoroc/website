@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import NextLink from 'next/link';
 import ProTip from '@/components/ProTip';
-import Copyright from '@/components/Copyright';
 import LoremIpsumContent from '@/components/LoremLipsum';
 
 const Home = () => {
@@ -28,7 +27,6 @@ const Home = () => {
           Go to the about page
         </Link>
         <ProTip />
-        <Copyright />
       </Box>
     </Container>
   );
