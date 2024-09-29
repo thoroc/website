@@ -28,7 +28,7 @@ jobs:
           cache: pnpm
       - name: Find affected files
         id: affected
-        run: tj-actions/verify-changed-files@v20
+        uses: tj-actions/verify-changed-files@v20
         with:
           files: "{src,test}/**/*{ts,tsx}"
       - name: Install dependencies
