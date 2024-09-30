@@ -9,6 +9,7 @@ import NextLink from 'next/link';
 const navItems = {
   home: { label: 'Home', path: '/' },
   about: { label: 'About', path: '/about' },
+  civitas: { label: 'Civitas', path: '/civitas' },
 };
 
 interface ElevationScrollProps {
