@@ -40,7 +40,7 @@ export const StackedBarChart = ({ data }: Props) => {
     value3: Number(row.value3),
   }));
 
-  const stacked = d3.stack().keys(subgroups.slice(1))(transformedData);
+  const stacked = d3.stack().keys(subgroups.slice(1))(transformedData as unknown as { [key: string]: number }[]);
 
   useEffect(() => {
     if (axisBottomRef.current) {
