@@ -1,8 +1,11 @@
 'use client';
 
 import * as d3 from 'd3';
-import { MouseEvent, useEffect, useRef, useState } from 'react';
-import type { IGroupedData } from './types';
+import React, { MouseEvent, useEffect, useRef, useState } from 'react';
+import type { IGroupedData } from '../types';
+import './styles.css';
+import { TooltipTable } from './TooltipTable';
+import { Box, Tooltip } from '@mui/material';
 
 interface Props {
   data: IGroupedData[];
@@ -106,25 +109,12 @@ export const GroupedBarChart = ({ data }: Props) => {
         </g>
       </svg>
       {tooltip !== null ? (
-        <div className="tooltip" style={{ top: tooltip.y, left: tooltip.x }}>
-          <span className="tooltip__title">{labels[tooltip.index]}</span>
-          <table className="tooltip__table">
-            <thead>
-              <tr>
-                <td>Value 1</td>
-                <td>Value 2</td>
-                <td>Value 3</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{data[tooltip.index].values[0]}</td>
-                <td>{data[tooltip.index].values[1]}</td>
-                <td>{data[tooltip.index].values[2]}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <Tooltip title={labels[tooltip.index]}>
+          <Box className="tooltip" style={{ top: tooltip.y, left: tooltip.x }}>
+            <Box className="tooltip__title">{labels[tooltip.index]}</Box>
+            <TooltipTable data={data} tooltip={tooltip} />
+          </Box>
+        </Tooltip>
       ) : null}
     </>
   );
