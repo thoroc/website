@@ -32,7 +32,14 @@ export const StackedBarChart = ({ data }: Props) => {
   const scaleX = d3.scaleBand().domain(labels).range([0, width]).padding(0.3);
   const scaleY = d3.scaleLinear().domain([0, max]).range([height, 0]);
   const color = d3.scaleOrdinal<string>().domain(subgroups).range(['#e41a1c', '#377eb8', '#4daf4a']);
-  const stacked = d3.stack().keys(subgroups)(csv);
+  const stacked = d3.stack().keys(subgroups)(
+    csv.map((row) => ({
+      ...row,
+      value1: Number(row.value1),
+      value2: Number(row.value2),
+      value3: Number(row.value3),
+    })),
+  );
 
   useEffect(() => {
     if (axisBottomRef.current) {
