@@ -5,7 +5,7 @@ import React, { MouseEvent, useEffect, useRef, useState } from 'react';
 import type { IGroupedData } from '../types';
 import './styles.css';
 import { TooltipTable } from './TooltipTable';
-import { Box, Tooltip } from '@mui/material';
+import { Box, Tooltip, Typography } from '@mui/material';
 
 interface Props {
   data: IGroupedData[];
@@ -80,6 +80,9 @@ export const GroupedBarChart = ({ data }: Props) => {
 
   return (
     <>
+      <Box className="chart-title">
+        <Typography variant="h5">Grouped Bar Chart</Typography>
+      </Box>
       <svg width={width + margin.left + margin.right} height={height + margin.top + margin.bottom}>
         <g transform={`translate(${margin.left}, ${margin.top})`}>
           <g ref={axisBottomRef} transform={`translate(0, ${height})`} />

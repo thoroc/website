@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { axisBottom, axisLeft, ScaleBand, scaleBand, ScaleLinear, scaleLinear, select } from 'd3';
 import type { IData } from './types';
+import { Box, Typography } from '@mui/material';
 
 interface BarChartProps {
   data: IData[];
@@ -79,12 +80,17 @@ export const BarChart = ({ data }: BarChartProps) => {
     .range([height, 0]);
 
   return (
-    <svg width={width + margin.left + margin.right} height={height + margin.top + margin.bottom}>
-      <g transform={`translate(${margin.left}, ${margin.top})`}>
-        <AxisBottom scale={scaleX} transform={`translate(0, ${height})`} />
-        <AxisLeft scale={scaleY} />
-        <Bars data={data} height={height} scaleX={scaleX} scaleY={scaleY} />
-      </g>
-    </svg>
+    <>
+      <Box className="chart-title">
+        <Typography variant="h5">Bar Chart</Typography>
+      </Box>
+      <svg width={width + margin.left + margin.right} height={height + margin.top + margin.bottom}>
+        <g transform={`translate(${margin.left}, ${margin.top})`}>
+          <AxisBottom scale={scaleX} transform={`translate(0, ${height})`} />
+          <AxisLeft scale={scaleY} />
+          <Bars data={data} height={height} scaleX={scaleX} scaleY={scaleY} />
+        </g>
+      </svg>
+    </>
   );
 };

@@ -3,6 +3,7 @@
 import * as d3 from 'd3';
 import { useEffect, useRef } from 'react';
 import { IGroupedData } from './types';
+import { Box, Typography } from '@mui/material';
 
 interface Props {
   data: IGroupedData[];
@@ -44,32 +45,37 @@ export const StackedBarChart = ({ data }: Props) => {
   }, [scaleX, scaleY]);
 
   return (
-    <svg width={width + margin.left + margin.right} height={height + margin.top + margin.bottom}>
-      <g transform={`translate(${margin.left}, ${margin.top})`}>
-        <g ref={axisBottomRef} transform={`translate(0, ${height})`} />
-        <g ref={axisLeftRef} />
-        {stacked.map((data, index) => {
-          return (
-            <g key={`group-${index}`} fill={color(data.key)}>
-              {data.map((d, index) => {
-                const label = String(d.data.label);
-                const y0 = scaleY(d[0]);
-                const y1 = scaleY(d[1]);
+    <>
+      <Box className="chart-title">
+        <Typography variant="h5">Stacked Bar Chart</Typography>
+      </Box>
+      <svg width={width + margin.left + margin.right} height={height + margin.top + margin.bottom}>
+        <g transform={`translate(${margin.left}, ${margin.top})`}>
+          <g ref={axisBottomRef} transform={`translate(0, ${height})`} />
+          <g ref={axisLeftRef} />
+          {stacked.map((data, index) => {
+            return (
+              <g key={`group-${index}`} fill={color(data.key)}>
+                {data.map((d, index) => {
+                  const label = String(d.data.label);
+                  const y0 = scaleY(d[0]);
+                  const y1 = scaleY(d[1]);
 
-                return (
-                  <rect
-                    key={`rect-${index}`}
-                    x={scaleX(label)}
-                    y={y1}
-                    width={scaleX.bandwidth()}
-                    height={y0 - y1 || 0}
-                  />
-                );
-              })}
-            </g>
-          );
-        })}
-      </g>
-    </svg>
+                  return (
+                    <rect
+                      key={`rect-${index}`}
+                      x={scaleX(label)}
+                      y={y1}
+                      width={scaleX.bandwidth()}
+                      height={y0 - y1 || 0}
+                    />
+                  );
+                })}
+              </g>
+            );
+          })}
+        </g>
+      </svg>
+    </>
   );
 };
