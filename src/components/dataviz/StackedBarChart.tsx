@@ -44,11 +44,11 @@ export const StackedBarChart = ({ data }: Props) => {
 
   useEffect(() => {
     if (axisBottomRef.current) {
-      d3.select(axisBottomRef.current).call(d3.axisBottom(scaleX));
+      d3.select(axisBottomRef.current as unknown as SVGGElement).call(d3.axisBottom(scaleX));
     }
 
     if (axisLeftRef.current) {
-      d3.select(axisLeftRef.current).call(d3.axisLeft(scaleY));
+      d3.select(axisLeftRef.current as unknown as SVGGElement).call(d3.axisLeft(scaleY));
     }
   }, [scaleX, scaleY]);
 
