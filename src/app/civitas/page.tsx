@@ -31,8 +31,9 @@ const Civitas = () => {
         </Typography>
         <Typography variant="body1" sx={{ mb: 2 }}>
           Civitas is a Latin word that means "citizen" or "community". It is the root of the word "civilization". This
-          page is inspired by the{' '}
-          <Link href="https://github.com/times/dataviz-catalogue">Times' dataviz catalogue</Link>
+          page is inspired by the New York Times'{' '}
+          <Link href="https://github.com/times/dataviz-catalogue">dataviz catalogue</Link> and Amelia Wattenberger's
+          blog post on <Link href="https://2019.wattenberger.com/blog/react-and-d3">React and D3</Link>.
         </Typography>
         <BarChart data={BAR_CHART_DATA} />
         <GroupedBarChart data={GROUPED_BAR_CHART_DATA} />
