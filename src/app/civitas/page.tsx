@@ -1,11 +1,11 @@
 import * as fs from 'node:fs';
 import * as path from 'path';
 import { Box, Container, Link, Typography } from '@mui/material';
-import { Hemicycle } from '@/components';
+import { ParliamentChart } from '@/components';
 
 const Civitas = () => {
   const file = fs.readFileSync(path.resolve(process.cwd(), 'src/app/civitas/data/hemicycle.json'));
-  const data = JSON.parse(file.toString());
+  const data = JSON.parse(file.toString()).data;
 
   return (
     <Container>
@@ -27,7 +27,7 @@ const Civitas = () => {
           <Link href="https://github.com/times/dataviz-catalogue">dataviz catalogue</Link> and Amelia Wattenberger's
           blog post on <Link href="https://2019.wattenberger.com/blog/react-and-d3">React and D3</Link>.
         </Typography>
-        <Hemicycle data={data} />
+        <ParliamentChart data={data} />
       </Box>
     </Container>
   );

@@ -99,6 +99,8 @@ const makeParliament = ({
   const outerParliamentRadius = Math.min(width / 2, height);
   const innerParliamentRadius = outerParliamentRadius * innerRadiusCoef;
 
+  console.log('data', data);
+
   let nSeats = data.reduce((acc, p) => acc + (typeof p.seats === 'number' ? Math.floor(p.seats) : p.seats.length), 0);
 
   const { nRows, maxSeatNumber, b } = calculateRows({ nSeats, innerRadiusCoef });

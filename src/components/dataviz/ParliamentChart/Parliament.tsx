@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { Party, Seat } from './types';
-import makeParliament from './parliament';
+import makeParliament from './utils';
 
 // Interface for configuration
 interface Config {
@@ -12,13 +12,13 @@ interface Config {
   innerRadiusCoef: number;
 }
 
-interface ParliamentChartProps {
+interface ParliamentProps {
   data?: Party[];
   config?: Config;
 }
 
 // Main ParliamentChart component
-const ParliamentChart: React.FC<ParliamentChartProps> = (props) => {
+const Parliament: React.FC<ParliamentProps> = (props) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   const config: Config = props.config || {
@@ -75,4 +75,4 @@ const ParliamentChart: React.FC<ParliamentChartProps> = (props) => {
   return <svg ref={svgRef}></svg>;
 };
 
-export default ParliamentChart;
+export default Parliament;
