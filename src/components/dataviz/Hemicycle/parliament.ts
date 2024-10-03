@@ -72,27 +72,17 @@ const createSeats = ({
 
 // Assign the seats to the parties
 const assignSeatsToParties = ({ seats, data }: { seats: Seat[]; data: Party[] }) => {
-  let partyIndex = 0;
   let seatIndex = 0;
 
-  console.log('Seats:', seats);
-  console.log('Parties:', data);
+  for (const party of data) {
+    const nSeatsInParty = typeof party.seats === 'number' ? party.seats : party.seats.length;
 
-  seats.forEach((s) => {
-    let party = data[partyIndex];
-
-    // const nSeatsInParty = typeof party.seats === 'number' ? party.seats : party.seats.length;
-
-    // if (seatIndex >= nSeatsInParty) {
-    //   partyIndex += 1;
-    //   seatIndex = 0;
-    //   party = data[partyIndex];
-    // }
-
-    s.party = party;
-    // s.data = typeof party.seats === 'number' ? null : party.seats[seatIndex];
-    seatIndex += 1;
-  });
+    for (let i = 0; i < nSeatsInParty && seatIndex < seats.length; i++) {
+      seats[seatIndex].party = party;
+      seats[seatIndex].data = typeof party.seats === 'number' ? null : party.seats[i];
+      seatIndex += 1;
+    }
+  }
 };
 
 const makeParliament = ({
@@ -119,8 +109,6 @@ const makeParliament = ({
   seats.sort((a, b2) => a.polar.teta - b2.polar.teta || b2.polar.r - a.polar.r);
 
   assignSeatsToParties({ seats, data });
-
-  console.log('Seats:', seats);
 
   return { seats, rowWidth };
 };

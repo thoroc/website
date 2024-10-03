@@ -41,8 +41,6 @@ const ParliamentChart: React.FC<ParliamentChartProps> = (props) => {
     { id: 'brothers', name: 'Brothers of Italy', seats: 12, color: '#1d24bf' },
   ];
 
-  console.log('Data:', data);
-
   useEffect(() => {
     const { seats, rowWidth } = makeParliament({ data, ...config });
 
@@ -56,8 +54,8 @@ const ParliamentChart: React.FC<ParliamentChartProps> = (props) => {
 
     const svg = d3
       .select(svgRef.current)
-      // .attr('width', isMobile ? config.mobileWidth : config.width)
-      // .attr('height', isMobile ? config.mobileHeight : config.height)
+      .attr('width', config.width)
+      .attr('height', config.height)
       .style('background-color', '#f8f7f3');
 
     const group = svg.append('g').attr('transform', `translate(${config.width / 2}, ${config.height / 2 + 150})`);

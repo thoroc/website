@@ -1,11 +1,12 @@
 import { Box, Typography } from '@mui/material';
-import ParliamentChart, { Party } from './ParliamentChart';
+import ParliamentChart from './ParliamentChart';
+import { Party } from './types';
 
 interface HemicycleProps {
   data: Party[];
   width?: number;
   height?: number;
-  innerRadiusCoef: number;
+  innerRadiusCoef?: number;
 }
 
 export const Hemicycle = (props: HemicycleProps) => {
