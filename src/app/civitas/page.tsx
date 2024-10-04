@@ -4,7 +4,7 @@ import { Box, Container, Link, Typography } from '@mui/material';
 import { ParliamentChart } from '@/components';
 
 const Civitas = () => {
-  const file = fs.readFileSync(path.resolve(process.cwd(), 'src/app/civitas/data/hemicycle.json'));
+  const file = fs.readFileSync(path.resolve(process.cwd(), 'src/app/civitas/data/parliament.json'));
   const data = JSON.parse(file.toString()).data;
 
   return (
