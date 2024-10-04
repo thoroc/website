@@ -2,7 +2,7 @@
 
 import * as d3 from 'd3';
 import Seat from './Seat';
-import { HemicycleDataset } from './types';
+import { HemicycleDataset, SeatType } from './types';
 
 export type HemicycleChartProps = {
   data: HemicycleDataset;
@@ -13,12 +13,14 @@ export type HemicycleChartProps = {
   margin?: { top: number; right: number; bottom: number; left: number };
 };
 
-function calculatePositionsWithMinRadius(
-  totalPoints: number,
+const distribution = (
+  data: HemicycleDataset,
   circleRadius: number,
   distanceBetween: number,
   minHemicycleRadius: number,
-): { x: number; y: number }[] {
+): SeatType[] => {
+  const totalPoints = data.parties.reduce((acc, party) => acc + party.seats, 0);
+
   const positions = [];
   const circleDiameter = circleRadius * 2;
   let remainingPoints = totalPoints;
@@ -47,7 +49,12 @@ function calculatePositionsWithMinRadius(
       const x = (currentRadius + circleRadius) * Math.cos(theta); // Use (currentRadius + circleRadius) for proper spacing
       const y = -(currentRadius + circleRadius) * Math.sin(theta); // Flip y-coordinate to position it in the upper half
 
-      positions.push({ x, y });
+      // positions.push({ x, y });
+      positions.push({
+        party: data.parties[i % data.parties.length],
+        polar: { r: currentRadius, teta: theta },
+        cartesian: { x, y },
+      });
     }
 
     // Subtract the number of points placed in this row from remaining points
@@ -58,7 +65,7 @@ function calculatePositionsWithMinRadius(
   }
 
   return positions;
-}
+};
 
 const HemicycleChart = (props: HemicycleChartProps) => {
   const { data, radius = 20, rows = 10 } = props;
@@ -68,13 +75,13 @@ const HemicycleChart = (props: HemicycleChartProps) => {
 
   const totalSeats = data.parties.reduce((acc, party) => acc + party.seats, 0);
 
-  const d = calculatePositionsWithMinRadius(totalSeats, 5, 2, 50);
+  const d = distribution(data, 5, 2, 50);
 
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${width / 2}, ${height})`}>
         {d.map((p, i) => (
-          <Seat position={p} radius={5} key={i} />
+          <Seat position={p.cartesian} radius={5} key={i} color={p.party.color} />
         ))}
       </g>
     </svg>

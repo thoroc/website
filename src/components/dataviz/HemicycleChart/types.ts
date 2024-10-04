@@ -10,11 +10,6 @@ export type HemicycleDataset = {
 
 export type SeatType = {
   party: PartyType;
-  data: any;
   polar: { r: number; teta: number };
   cartesian: { x: number; y: number };
-};
-
-export type RowType = {
-  seats: SeatType[];
 };
