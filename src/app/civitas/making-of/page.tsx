@@ -1,8 +1,21 @@
-import Seat from '@/components/dataviz/HemicycleChart/Seat';
+import HemicycleChart from '@/components/dataviz/HemicycleChart';
+import { HemicycleDataset } from '@/components/dataviz/HemicycleChart/types';
 import { Box, Typography } from '@mui/material';
 import Link from 'next/link';
 
 export const CivitasMakingOf = () => {
+  const data: HemicycleDataset = {
+    parties: [
+      { name: 'Party 1', color: 'red', seats: 12 },
+      // { name: 'Party 2', color: 'blue', seats: 23 },
+      // { name: 'Party 3', color: 'green', seats: 55 },
+      // { name: 'Party 4', color: 'yellow', seats: 182 },
+      // { name: 'Party 5', color: 'purple', seats: 308 },
+    ],
+  };
+
+  const size = { width: 640, height: 480 };
+
   return (
     <Box
       sx={{
@@ -22,7 +35,7 @@ export const CivitasMakingOf = () => {
           first we need to create the representation for a single seat.
         </Typography>
         <Box>
-          <Seat />
+          <HemicycleChart data={data} size={size} />
         </Box>
       </Box>
     </Box>
