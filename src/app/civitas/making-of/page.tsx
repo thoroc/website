@@ -7,8 +7,8 @@ export const CivitasMakingOf = () => {
   const data: HemicycleDataset = {
     parties: [
       { name: 'Party 1', color: 'red', seats: 12 },
-      // { name: 'Party 2', color: 'blue', seats: 23 },
-      // { name: 'Party 3', color: 'green', seats: 55 },
+      { name: 'Party 2', color: 'blue', seats: 23 },
+      { name: 'Party 3', color: 'green', seats: 55 },
       // { name: 'Party 4', color: 'yellow', seats: 182 },
       // { name: 'Party 5', color: 'purple', seats: 308 },
     ],

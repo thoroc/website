@@ -13,56 +13,52 @@ export type HemicycleChartProps = {
   margin?: { top: number; right: number; bottom: number; left: number };
 };
 
-// Function to calculate positions of circles distributed in a hemicycle with increasing row length
-const distribution = ({
-  totalSeats,
-  totalRows,
-  radius,
-  rowHeight,
-}: {
-  totalSeats: number;
-  totalRows: number;
-  radius: number;
-  rowHeight: number;
-}): { x: number; y: number }[] => {
+function calculatePositionsWithMinRadius(
+  totalPoints: number,
+  circleRadius: number,
+  distanceBetween: number,
+  minHemicycleRadius: number,
+): { x: number; y: number }[] {
   const positions = [];
-  let remainingPoints = totalSeats;
-  let totalArcLength = Math.PI * radius; // The total arc length of the hemicycle
+  const circleDiameter = circleRadius * 2;
+  let remainingPoints = totalPoints;
+  let currentRadius = minHemicycleRadius; // Start with the minimum hemicycle radius
 
-  for (let idx = 0; idx < totalRows; idx++) {
-    // Calculate the radius for the current row (distance from the center)
-    const rowRadius = radius + idx * rowHeight; // Each row gets closer to the center
+  // Continue until all points are placed
+  while (remainingPoints > 0) {
+    // Calculate the available arc length (circumference of the row's hemicycle)
+    const rowCircumference = Math.PI * currentRadius; // Half circle circumference for the current row
 
-    console.log('rowRadius', rowRadius);
+    // Adjust the arc length for the circle radius offsets on both ends
+    const effectiveArcLength = rowCircumference - circleDiameter; // Reduce by circle diameter
 
-    // Determine how many points can fit on this row based on its arc length
-    const rowCircumference = Math.floor(Math.PI * rowRadius); // Arc length for the current row
+    // Calculate how many points can fit in this row using the effective arc length
+    const pointsInRow = Math.floor(effectiveArcLength / (circleDiameter + distanceBetween));
 
-    console.log('rowCircumference', rowCircumference);
+    // Calculate the angle for the spacing based on the number of points
+    const angleSpacing = Math.PI / (pointsInRow + 1); // Evenly space points across half a circle
 
-    const pointsPerRow = Math.min(remainingPoints, Math.ceil((rowCircumference / totalArcLength) * totalSeats));
+    // Place points on this row
+    for (let i = 0; i < Math.min(pointsInRow, remainingPoints); i++) {
+      // Calculate the angle for each circle's position
+      const theta = angleSpacing * (i + 1); // Reverse the order for the last circle on the right
 
-    // Update remaining points after assigning this row
-    remainingPoints -= pointsPerRow;
+      // Calculate x, y coordinates for this point based on angle and radius
+      const x = (currentRadius + circleRadius) * Math.cos(theta); // Use (currentRadius + circleRadius) for proper spacing
+      const y = -(currentRadius + circleRadius) * Math.sin(theta); // Flip y-coordinate to position it in the upper half
 
-    // Calculate the angular separation between points on this row
-    const angularSeparation = Math.PI / (pointsPerRow - 1);
-
-    // Calculate the position of each point in the row
-    for (let i = 0; i < pointsPerRow; i++) {
-      const theta = angularSeparation * i;
-
-      // Calculate x, y coordinates based on angle and row radius
-      const x = rowRadius * Math.cos(theta) * 10;
-      const y = rowRadius * Math.sin(theta) * 10;
-
-      // Add the point's coordinates to the result
       positions.push({ x, y });
     }
+
+    // Subtract the number of points placed in this row from remaining points
+    remainingPoints -= pointsInRow;
+
+    // Update the radius for the next row: Add the circle diameter + distanceBetween for vertical spacing
+    currentRadius += circleDiameter + distanceBetween;
   }
 
   return positions;
-};
+}
 
 const HemicycleChart = (props: HemicycleChartProps) => {
   const { data, radius = 20, rows = 10 } = props;
@@ -72,11 +68,11 @@ const HemicycleChart = (props: HemicycleChartProps) => {
 
   const totalSeats = data.parties.reduce((acc, party) => acc + party.seats, 0);
 
-  const d = distribution({ totalSeats, totalRows: rows, radius, rowHeight: 80 });
+  const d = calculatePositionsWithMinRadius(totalSeats, 5, 2, 50);
 
   return (
     <svg width={width} height={height}>
-      <g transform={`translate(${width / 2}, 0)`}>
+      <g transform={`translate(${width / 2}, ${height})`}>
         {d.map((p, i) => (
           <Seat position={p} radius={5} key={i} />
         ))}
