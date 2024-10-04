@@ -6,18 +6,13 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import NextLink from 'next/link';
 
-const navItems = {
-  home: { label: 'Home', path: '/' },
-  about: { label: 'About', path: '/about' },
-  civitas: { label: 'Civitas', path: '/civitas' },
-};
-
-interface ElevationScrollProps {
+interface NavigationScrollProps {
   title: string;
   children?: React.ReactElement<any>;
+  navItems: Record<string, { label: string; path: string }>;
 }
 
-const ElevationScroll = (props: ElevationScrollProps) => {
+const NavigationScroll = (props: NavigationScrollProps) => {
   const { children } = props;
 
   return children
@@ -27,10 +22,12 @@ const ElevationScroll = (props: ElevationScrollProps) => {
     : null;
 };
 
-const ElevateAppBar = (props: ElevationScrollProps) => {
+const Navigation = (props: NavigationScrollProps) => {
+  const { navItems } = props;
+
   return (
     <>
-      <ElevationScroll {...props}>
+      <NavigationScroll {...props}>
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" component="div">
@@ -45,10 +42,10 @@ const ElevateAppBar = (props: ElevationScrollProps) => {
             </Box>
           </Toolbar>
         </AppBar>
-      </ElevationScroll>
+      </NavigationScroll>
       <Toolbar />
     </>
   );
 };
 
-export default ElevateAppBar;
+export default Navigation;

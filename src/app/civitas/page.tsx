@@ -1,20 +1,12 @@
+import * as fs from 'node:fs';
+import * as path from 'path';
 import { Box, Container, Link, Typography } from '@mui/material';
-import { BarChart, GroupedBarChart, IData, IGroupedData, StackedBarChart } from '@/components/dataviz';
-
-const BAR_CHART_DATA: IData[] = [
-  { label: 'Apples', value: 100 },
-  { label: 'Bananas', value: 200 },
-  { label: 'Oranges', value: 50 },
-  { label: 'Kiwis', value: 150 },
-];
-
-const GROUPED_BAR_CHART_DATA: IGroupedData[] = [
-  { label: 'Apples', values: [60, 80, 100] },
-  { label: 'Bananas', values: [160, 200, 120] },
-  { label: 'Oranges', values: [60, 40, 10] },
-];
+import { ParliamentChart } from '@/components';
 
 const Civitas = () => {
+  const file = fs.readFileSync(path.resolve(process.cwd(), 'src/app/civitas/data/parliament.json'));
+  const data = JSON.parse(file.toString()).data;
+
   return (
     <Container>
       <Box
@@ -35,9 +27,7 @@ const Civitas = () => {
           <Link href="https://github.com/times/dataviz-catalogue">dataviz catalogue</Link> and Amelia Wattenberger's
           blog post on <Link href="https://2019.wattenberger.com/blog/react-and-d3">React and D3</Link>.
         </Typography>
-        <BarChart data={BAR_CHART_DATA} />
-        <GroupedBarChart data={GROUPED_BAR_CHART_DATA} />
-        <StackedBarChart data={GROUPED_BAR_CHART_DATA} />
+        <ParliamentChart data={data} />
       </Box>
     </Container>
   );
