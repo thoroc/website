@@ -9,9 +9,10 @@ import Copyright from '@/components/Copyright';
 
 const navItems = {
   home: { label: 'Home', path: '/' },
-  about: { label: 'About', path: '/about' },
+  wangtiles: { label: 'Wang Tiles', path: '/wang-tiles' },
   civitas: { label: 'Civitas', path: '/civitas' },
   infographics: { label: 'Infographics', path: '/infographics' },
+  about: { label: 'About', path: '/about' },
 };
 
 const RootLayout = (props: { children: React.ReactNode }) => {
