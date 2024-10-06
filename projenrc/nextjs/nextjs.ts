@@ -80,6 +80,9 @@ export class NextJs extends Component {
 
     const eslintConfig = {
       extends: ["next/core-web-vitals", "next/typescript"],
+      rules: {
+        "@next/next/no-duplicate-head": "warn",
+      },
     };
 
     AddOverride(this.project, ".eslintrc.json", eslintConfig);

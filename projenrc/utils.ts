@@ -1,12 +1,16 @@
 import { SourceCode } from "projen";
 import { TypeScriptProject } from "projen/lib/typescript";
 
+type OverrideOptionValues = {
+  [key: string]: string | string[] | boolean | { [key: string]: string }[];
+};
+
 export type addOverrideOptions = {
   [key: string]:
     | string
     | boolean
     | string[]
-    | { [key: string]: string | string[] | boolean };
+    | OverrideOptionValues;
 };
 
 export const AddOverride = (

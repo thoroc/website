@@ -124,7 +124,8 @@
           "method"
         ]
       }
-    ]
+    ],
+    "@next/next/no-duplicate-head": "warn"
   },
   "overrides": [
     {
