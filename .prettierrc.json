@@ -4,6 +4,12 @@
   "singleQuote": true,
   "trailingComma": "all",
   "printWidth": 120,
+  "plugins": [
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-organize-attributes",
+    "prettier-plugin-packagejson",
+    "prettier-plugin-jsdoc"
+  ],
   "overrides": [
     {
       "files": [

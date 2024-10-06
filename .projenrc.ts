@@ -1,7 +1,7 @@
 import { web } from 'projen';
 import { NodePackageManager, ProseWrap, QuoteProps, TrailingComma } from 'projen/lib/javascript';
 import { TypeScriptAppProject } from 'projen/lib/typescript';
-import { NextJs, AddOverride, Vercel, addOverrideOptions, DeleteOverride, Renovate, Github } from './projenrc';
+import { NextJs, AddOverride, Vercel, addOverrideOptions, DeleteOverride, Renovate, Github, Eslint } from './projenrc';
 
 const pnpmVersion = '9';
 
@@ -21,6 +21,12 @@ const project = new TypeScriptAppProject({
       singleQuote: true,
       trailingComma: TrailingComma.ALL,
       printWidth: 120,
+      plugins: [
+        'prettier-plugin-organize-imports',
+        'prettier-plugin-organize-attributes',
+        'prettier-plugin-packagejson',
+        'prettier-plugin-jsdoc',
+      ],
     },
     overrides: [
       {
@@ -76,6 +82,7 @@ packageJson?.addOverride('engines', { node: '>=20' });
 
 console.log(project instanceof web.NextJsTypeScriptProject);
 
+new Eslint(project);
 new Vercel(project);
 new NextJs(project);
 new Renovate(project);
