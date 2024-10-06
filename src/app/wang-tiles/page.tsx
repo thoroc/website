@@ -55,14 +55,24 @@ const WangTile = () => {
           Here is a set of Wang tiles. You can see that every tile has two different types of edge; blue or yellow. This
           gives 2x2x2x2 (written as 2^4), or 16 possible combinations. Hence the complete set contains 16 different
           tiles.
-          <ImageList cols={16} gap={0}>
-            {tileset.map((tile, i) => (
-              <ImageListItem key={i}>
-                {tile}
-                <ImageListItemBar title={i} position="below" />
-              </ImageListItem>
-            ))}
-          </ImageList>
+          <Box
+            sx={{
+              my: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <ImageList cols={16} gap={0}>
+              {tileset.map((tile, i) => (
+                <ImageListItem key={i}>
+                  {tile}
+                  <ImageListItemBar title={i} position="below" />
+                </ImageListItem>
+              ))}
+            </ImageList>
+          </Box>
           The set is said to be 'complete' as it includes a tile for every possible combination of two edges. We can use
           these tiles to fill a grid where all tile edges match.
         </Box>
@@ -137,7 +147,7 @@ const WangTile = () => {
           We arrange Wang tiles in a grid array. For each position, a tile is selected at random from the tileset,
           always ensuring that all edges match adjacent tiles. See Path Tiles for more info, images and interactive
           Stagecast sim. See Stage for random tile arrays.
-          <Playground size={{ x: 10, y: 8 }} basePath="/wang-tiles/2-edge/img/base" />
+          <Playground size={{ width: 16, height: 8 }} basePath="/wang-tiles/2-edge/img/base" />
         </Box>
         {/* <Typography variant="h4" component="h2" sx={{ mb: 2 }}>
           4x4 Layout
