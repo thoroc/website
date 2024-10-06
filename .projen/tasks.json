@@ -142,6 +142,15 @@
       "name": "pre-compile",
       "description": "Prepare the project for compilation"
     },
+    "renovate": {
+      "name": "renovate",
+      "description": "Run renovate locally",
+      "steps": [
+        {
+          "exec": "npx renovate --platform=local --repository-cache=reset --dry-run=full"
+        }
+      ]
+    },
     "server": {
       "name": "server",
       "description": "Starts the Next.js application in production mode",

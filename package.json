@@ -13,6 +13,7 @@
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
+    "renovate": "npx projen renovate",
     "server": "npx projen server",
     "telemetry": "npx projen telemetry",
     "test": "npx projen test",

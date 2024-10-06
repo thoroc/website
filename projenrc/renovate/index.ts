@@ -56,6 +56,11 @@ export class Renovate extends Component {
       { matchDepTypes: ['devDependencies'], automerge: this.automerge, automergeStrategy: this.automergeStrategy },
     ];
 
+    project.addTask('renovate', {
+      description: 'Run renovate locally',
+      steps: [{ exec: 'npx renovate --platform=local --repository-cache=reset --dry-run=full' }],
+    });
+
     this.project = project;
   }
 
