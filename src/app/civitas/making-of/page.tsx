@@ -5,7 +5,7 @@ import { HemicycleDataset } from '@/components/dataviz/HemicycleChart/types';
 import { Box, Grid2 as Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 
-export const CivitasMakingOf = () => {
+const CivitasMakingOf = () => {
   const data: HemicycleDataset = {
     parties: [
       { name: 'Party 1', color: 'red', seats: 12 },
