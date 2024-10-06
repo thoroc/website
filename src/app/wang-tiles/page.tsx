@@ -3,12 +3,25 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import Link from 'next/link';
-import { Grid2, List, ListItem, ListItemText, Table, TableBody, TableCell, TableRow } from '@mui/material';
+import {
+  Grid2,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+  List,
+  ListItem,
+  ListItemText,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+} from '@mui/material';
 import { loadTileset } from '@/components/wang/tilesets/utils';
 import Tileset from '@/components/wang/tilesets/Tileset';
+import Playground from '@/components/wang/playground';
 
 const WangTile = () => {
-  const tileset = loadTileset({ basePath: '/wang-tiles/2-edge/img/base' });
+  const tileset = (loadTileset({ basePath: '/wang-tiles/2-edge/img/base' }) as React.ReactNode[]) || [];
 
   return (
     <Container maxWidth="lg">
@@ -42,16 +55,14 @@ const WangTile = () => {
           Here is a set of Wang tiles. You can see that every tile has two different types of edge; blue or yellow. This
           gives 2x2x2x2 (written as 2^4), or 16 possible combinations. Hence the complete set contains 16 different
           tiles.
-          <Table sx={{ '& .MuiTableCell-sizeMedium': { padding: '0', margin: '0' } }}>
-            <TableBody>
-              <TableRow>
-                {Array.isArray(tileset) && tileset.map((tile, index) => <TableCell key={index}>{tile}</TableCell>)}
-              </TableRow>
-              <TableRow>
-                {Array.isArray(tileset) && tileset.map((_, index) => <TableCell key={index}>{index}</TableCell>)}
-              </TableRow>
-            </TableBody>
-          </Table>
+          <ImageList cols={16} gap={0}>
+            {tileset.map((tile, i) => (
+              <ImageListItem key={i}>
+                {tile}
+                <ImageListItemBar title={i} position="below" />
+              </ImageListItem>
+            ))}
+          </ImageList>
           The set is said to be 'complete' as it includes a tile for every possible combination of two edges. We can use
           these tiles to fill a grid where all tile edges match.
         </Box>
@@ -80,8 +91,8 @@ const WangTile = () => {
               Blue edges are ignored.
             </Grid2>
             <Grid2 size={4}>
+              <Typography variant="h5">2-edge weighting</Typography>
               <Table>
-                <label>2-edge weighting</label>
                 <TableBody>
                   <TableRow>
                     <TableCell></TableCell>
@@ -126,6 +137,7 @@ const WangTile = () => {
           We arrange Wang tiles in a grid array. For each position, a tile is selected at random from the tileset,
           always ensuring that all edges match adjacent tiles. See Path Tiles for more info, images and interactive
           Stagecast sim. See Stage for random tile arrays.
+          <Playground size={{ x: 10, y: 8 }} basePath="/wang-tiles/2-edge/img/base" />
         </Box>
         {/* <Typography variant="h4" component="h2" sx={{ mb: 2 }}>
           4x4 Layout
