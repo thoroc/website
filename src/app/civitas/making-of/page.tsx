@@ -1,6 +1,8 @@
+'use client';
+
 import HemicycleChart from '@/components/dataviz/HemicycleChart';
 import { HemicycleDataset } from '@/components/dataviz/HemicycleChart/types';
-import { Box, Typography } from '@mui/material';
+import { Box, Grid2 as Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 
 export const CivitasMakingOf = () => {
@@ -30,13 +32,16 @@ export const CivitasMakingOf = () => {
         Civitas Making Of
       </Typography>
       <Link href="/civitas"> Return to Civitas</Link>
-      <Box sx={{ justifyContent: 'left', alignItems: 'self-start' }}>
-        <Typography variant="body1" sx={{ mb: 2 }}>
-          first we need to create the representation for a single seat.
-        </Typography>
-        <Box>
-          <HemicycleChart data={data} size={size} />
-        </Box>
+      <Grid container spacing={2}>
+        <Grid size={6}>Code here</Grid>
+        <Grid size={6}>
+          <Typography variant="body1" sx={{ mb: 2 }}>
+            first we need to create the representation for a single seat.
+          </Typography>
+        </Grid>
+      </Grid>
+      <Box>
+        <HemicycleChart data={data} size={size} />
       </Box>
     </Box>
   );
