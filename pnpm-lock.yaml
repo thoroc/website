@@ -116,7 +116,7 @@ importers:
         version: 3.3.3
       projen:
         specifier: ^0.88.0
-        version: 0.88.0(constructs@10.3.0)
+        version: 0.88.1(constructs@10.3.0)
       tailwindcss:
         specifier: ^3.4.13
         version: 3.4.13(ts-node@10.9.2(@types/node@20.16.10)(typescript@5.6.2))
@@ -3264,8 +3264,8 @@ packages:
     resolution: {integrity: sha512-973driJZvxiGOQ5ONsFhOF/DtzPMOMtgC11kCpUrPGMTgqp2q/1gwzCquocrN33is0VZ5GFHXZYMM9l6h67v2Q==}
     engines: {node: '>=10'}
 
-  projen@0.88.0:
-    resolution: {integrity: sha512-7A6OAgL7Gz6R2yWMUlqMqZw7r5jOeqfpNLg+BZbLg3UXbtPsdOjPDp0NroGXxFkqW7NcVPzs7/lF7DZ6H9pRSQ==}
+  projen@0.88.1:
+    resolution: {integrity: sha512-LAv/kUAcCSTXH7/E+eeAJln3NvVFvhHgx9ezGPudcEPUOhr98M+Uojt6lniGvKESmk6rDO8AcVvzIhFH3kcz1g==}
     engines: {node: '>= 16.0.0'}
     hasBin: true
     peerDependencies:
@@ -7663,7 +7663,7 @@ snapshots:
     dependencies:
       parse-ms: 2.1.0
 
-  projen@0.88.0(constructs@10.3.0):
+  projen@0.88.1(constructs@10.3.0):
     dependencies:
       constructs: 10.3.0
 
