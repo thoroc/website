@@ -1,16 +1,17 @@
 import { Box, ImageList, ImageListItem } from '@mui/material';
 import BaseTile from './BaseTile';
+import { TilesetIndex } from '../playground/types';
 
 interface TilesetProps {
   basePath: string;
   size?: number;
 }
 
-export const loadTileset: React.FC<TilesetProps> = ({ basePath, size = 32 }) => {
+export const loadTileset: React.FC<TilesetProps> = ({ basePath, size = 32 }): React.ReactNode[] => {
   const tileset = [];
 
   for (let i = 0; i < 16; i++) {
-    tileset.push(<BaseTile index={i} scale={{ width: size, height: size }} basePath={basePath} />);
+    tileset.push(<BaseTile index={i as TilesetIndex} scale={{ width: size, height: size }} basePath={basePath} />);
   }
 
   return tileset;

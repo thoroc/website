@@ -1,13 +1,13 @@
 // number between 0 and 15
-export type TileIndex = IntRange<0, 15>;
+export type TilesetIndex = IntRange<0, 15>;
 
 export type Tile = {
   x: number;
   y: number;
-  value: TileIndex;
+  value: TilesetIndex;
 };
 
-export type Grid = Tile[];
+export type GridRow = Tile[];
 
 type IsPositive<N extends number> = `${N}` extends `-${number}` ? false : true;
 type IsSameSign<N1 extends number, N2 extends number> = IsPositive<N1> extends IsPositive<N2> ? true : false;

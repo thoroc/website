@@ -1,14 +1,16 @@
-import { TileIndex } from './types';
+import React from 'react';
+import { TilesetIndex } from './types';
 
 export class Tile {
   public x: number;
   public y: number;
-  public value: TileIndex;
+  public index: TilesetIndex;
+  public node: React.ReactNode;
 
-  constructor(x: number, y: number, value: TileIndex) {
+  constructor(x: number, y: number, value: TilesetIndex) {
     this.x = x;
     this.y = y;
-    this.value = value;
+    this.index = value;
   }
 
   public get position(): { x: number; y: number } {
@@ -20,21 +22,21 @@ export class Tile {
     this.y = y;
   }
 
-  public get index(): TileIndex {
-    return this.value;
+  public get value(): React.ReactNode {
+    return this.node;
   }
 
-  public get next(): TileIndex {
-    return (this.value + 1) as TileIndex;
+  public get next(): TilesetIndex {
+    return (this.index + 1) as TilesetIndex;
   }
 
   // get the previous value using bitwise OR
-  public get previous(): TileIndex {
-    return (this.value - 1) as TileIndex;
+  public get previous(): TilesetIndex {
+    return (this.index - 1) as TilesetIndex;
   }
 
   // get the inverse of the value using bitwise XOR
   public get inverse(): number {
-    return this.value ^ 0b1111;
+    return this.index ^ 0b1111;
   }
 }

@@ -1,51 +1,28 @@
-import { Tile, TileIndex } from './types';
+import { Directions } from './directions';
+import { GridRow, Tile, TilesetIndex } from './types';
 
 export class Grid {
   public readonly width: number;
   public readonly height: number;
-  public tiles: Tile[];
+  public rows: GridRow[];
 
   constructor(width: number, height: number) {
     this.width = width;
     this.height = height;
-    this.tiles = [];
+    this.rows = [];
 
-    for (let i = 0; i < width * height; i++) {
-      this.tiles.push({ x: i % width, y: Math.floor(i / width), value: 0 });
-    }
-  }
-  getTile(x: number, y: number) {
-    return this.tiles.find((tile) => tile.x === x && tile.y === y);
-  }
+    for (let y = 0; y < height; y++) {
+      const row: GridRow = [];
 
-  setTile(x: number, y: number, value: TileIndex | number) {
-    const tile = this.getTile(x, y);
+      for (let x = 0; x < width; x++) {
+        const tile: Tile = { x, y, value: 0 };
 
-    if (tile) {
-      tile.value = typeof value === 'number' ? (value as TileIndex) : value;
-    }
+        console.log(Directions.GetRandomDirection());
 
-    // set tiles north, south, east, west
-    const north = this.getTile(x, y - 1);
-    const south = this.getTile(x, y + 1);
+        row.push(tile);
+      }
 
-    const east = this.getTile(x + 1, y);
-    const west = this.getTile(x - 1, y);
-
-    if (north) {
-      north.value = 1;
-    }
-
-    if (south) {
-      south.value = 1;
-    }
-
-    if (east) {
-      east.value = 1;
-    }
-
-    if (west) {
-      west.value = 1;
+      this.rows.push(row);
     }
   }
 }
