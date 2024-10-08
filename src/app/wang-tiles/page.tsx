@@ -16,9 +16,8 @@ import {
   TableCell,
   TableRow,
 } from '@mui/material';
-import { loadTileset } from '@/components/wang/tilesets/utils';
-import Tileset from '@/components/wang/tilesets/Tileset';
-import Playground from '@/components/wang/playground';
+import Tileset, { loadTileset } from '@/components/wang/tilesets/Tileset';
+import Playground from '@/components/wang/playground/playground';
 
 const WangTile = () => {
   const tileset = (loadTileset({ basePath: '/wang-tiles/2-edge/img/base' }) as React.ReactNode[]) || [];

@@ -1,12 +1,26 @@
 import { Box, ImageList, ImageListItem } from '@mui/material';
-import { loadTileset } from './utils';
+import Image from 'next/image';
 
 interface TilesetProps {
   basePath: string;
+  size?: number;
 }
 
-const Tileset: React.FC<TilesetProps> = ({ basePath }) => {
-  const tileset = (loadTileset({ basePath }) as React.ReactNode[]) || [];
+export const loadTileset: React.FC<TilesetProps> = ({ basePath, size = 32 }) => {
+  const tileset = [];
+
+  for (let i = 0; i < 16; i++) {
+    tileset.push(<Image src={`${basePath}/${i}.gif`} alt={`Tile ${i}`} width={size} height={size} />);
+  }
+
+  return tileset;
+};
+
+const Tileset: React.FC<TilesetProps> = ({ basePath, size = 32 }) => {
+  const tileset = (loadTileset({ basePath, size }) as React.ReactNode[]) || [];
+
+  // custom order to keep the tileset with a consistent layout
+  const order = [0, 2, 10, 8, 4, 6, 14, 12, 5, 7, 15, 13, 1, 3, 11, 9];
 
   return (
     <Box
@@ -19,8 +33,8 @@ const Tileset: React.FC<TilesetProps> = ({ basePath }) => {
       }}
     >
       <ImageList cols={4} gap={0}>
-        {tileset.map((tile, i) => (
-          <ImageListItem key={i}>{tile}</ImageListItem>
+        {order.map((i) => (
+          <ImageListItem key={i}>{tileset[i]}</ImageListItem>
         ))}
       </ImageList>
     </Box>
