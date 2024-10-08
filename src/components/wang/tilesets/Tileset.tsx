@@ -1,5 +1,5 @@
 import { Box, ImageList, ImageListItem } from '@mui/material';
-import Image from 'next/image';
+import BaseTile from './BaseTile';
 
 interface TilesetProps {
   basePath: string;
@@ -10,7 +10,7 @@ export const loadTileset: React.FC<TilesetProps> = ({ basePath, size = 32 }) => 
   const tileset = [];
 
   for (let i = 0; i < 16; i++) {
-    tileset.push(<Image src={`${basePath}/${i}.gif`} alt={`Tile ${i}`} width={size} height={size} />);
+    tileset.push(<BaseTile index={i} scale={{ width: size, height: size }} basePath={basePath} />);
   }
 
   return tileset;

@@ -1,28 +1,32 @@
 'use client';
 
+import Image from 'next/image';
+import { useState } from 'react';
+
 export type TileProps = {
-  color?: string;
-  position?: { x: number; y: number };
+  index: number;
   scale?: { width: number; height: number };
-  radius?: { x: number; y: number };
+  basePath: string;
 };
 
-const BaseTile = (props: TileProps) => {
-  const {
-    color = 'fuscia',
-    position = { x: 0, y: 0 },
-    scale = { width: 40, height: 40 },
-    radius = { x: 0, y: 0 },
-  } = props;
+const BaseTile = ({ index, scale = { width: 32, height: 32 }, basePath }: TileProps) => {
+  // Create a state variable to manage the index
+  const [tileIndex, setTileIndex] = useState(index);
+
+  // Function to handle the click event
+  const handleClick = () => {
+    // Update the index value on click (e.g., increment by 1)
+    const random = Math.floor(Math.random() * 16);
+    setTileIndex(() => random);
+  };
+
   return (
-    <rect
+    <Image
+      src={`${basePath}/${tileIndex}.gif`}
+      alt={`Tile ${tileIndex}`}
       width={scale.width}
       height={scale.height}
-      x={position.x}
-      y={position.y}
-      rx={radius.x}
-      ry={radius.y}
-      fill={color}
+      onClick={handleClick}
     />
   );
 };
