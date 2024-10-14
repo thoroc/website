@@ -31,6 +31,7 @@ jspm_packages/
 .cache
 /test-reports/
 junit.xml
+!/jest.config.json
 /coverage/
 !/.prettierignore
 !/.prettierrc.json
@@ -47,6 +48,7 @@ junit.xml
 !/vercel.json
 .vercel
 !/tsconfig.json
+!/jest.config.ts
 /.next/
 /out/
 next-env.d.ts

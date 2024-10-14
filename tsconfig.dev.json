@@ -24,7 +24,8 @@
     "strictPropertyInitialization": true,
     "stripInternal": true,
     "target": "ES2019",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "jsx": "preserve"
   },
   "include": [
     "src/**/*.tsx",

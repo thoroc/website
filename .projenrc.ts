@@ -12,6 +12,7 @@ const project = new TypeScriptAppProject({
   projenrcTs: true,
   packageManager: NodePackageManager.PNPM,
   jest: true,
+  jestOptions: { configFilePath: 'jest.config.json' },
   eslint: true,
   prettier: true,
   prettierOptions: {
