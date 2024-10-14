@@ -19,6 +19,12 @@ export class TsConfig extends TypescriptConfig {
         isolatedModules: true,
         jsx: TypeScriptJsxMode.PRESERVE,
         incremental: true,
+        // @ts-expect-error - it exists
+        plugins: [
+          {
+            name: 'next',
+          },
+        ],
         baseUrl: '.',
         paths: {
           '@/*': ['./src/*'],
