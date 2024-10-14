@@ -25,7 +25,6 @@ export class TsConfig extends TypescriptConfig {
             name: 'next',
           },
         ],
-        types: ['jest', 'node', '@testing-library/jest-dom'],
         baseUrl: '.',
         paths: {
           '@/*': ['./src/*'],

@@ -165,11 +165,7 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "jest --passWithNoTests --updateSnapshot",
-          "receiveArgs": true
-        },
-        {
-          "spawn": "eslint"
+          "exec": "jest --passWithNoTests --updateSnapshot --config jest.config.ts"
         }
       ]
     },
