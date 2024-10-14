@@ -2,15 +2,23 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { TilesetIndex } from '../playground/types';
+import { TilesetIndex } from '../core/types';
+import { TileClass } from '../core';
 
-export type TileProps = {
+export type TileComponentProps = {
   index: TilesetIndex;
+  position: { x: number; y: number };
   scale?: { width: number; height: number };
   basePath: string;
+  onClick?: () => TileClass;
 };
 
-const BaseTile = ({ index, scale = { width: 32, height: 32 }, basePath }: TileProps): React.ReactNode => {
+const TileComponent: React.FC<TileComponentProps> = ({
+  index,
+  position = { x: 0, y: 0 },
+  scale = { width: 32, height: 32 },
+  basePath,
+}): React.ReactNode => {
   // Create a state variable to manage the index
   const [tileIndex, setTileIndex] = useState<TilesetIndex>(index);
 
@@ -28,8 +36,9 @@ const BaseTile = ({ index, scale = { width: 32, height: 32 }, basePath }: TilePr
       width={scale.width}
       height={scale.height}
       onClick={handleClick}
+      id={`col=${position.x}-row=${position.y}`}
     />
   );
 };
 
-export default BaseTile;
+export default TileComponent;

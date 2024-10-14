@@ -1,31 +1,7 @@
 import { Box, ImageList, ImageListItem, Typography } from '@mui/material';
-import { loadTileset } from '../tilesets/Tileset';
+import { GridClass, loadTileset } from '../core';
 
-type Grid = React.ReactNode[][];
-type Row = React.ReactNode[];
 type Tileset = React.ReactNode[];
-
-const buildPlayground = (size: { width: number; height: number }, tileset: Tileset): Grid => {
-  const playground: Grid = [];
-
-  if (tileset.length === 0) {
-    console.error('Tileset is empty.');
-    return [];
-  }
-
-  for (let y = 0; y < size.width; y++) {
-    const row: Row = [];
-
-    for (let x = 0; x < size.height; x++) {
-      const index = Math.floor(Math.random() * tileset.length);
-      row.push(tileset[index]);
-    }
-
-    playground.push(row);
-  }
-
-  return playground;
-};
 
 type PlaygroundProps = {
   size: { width: number; height: number };
@@ -33,8 +9,8 @@ type PlaygroundProps = {
 };
 
 const Playground: React.FC<PlaygroundProps> = ({ size = { width: 4, height: 4 }, basePath }) => {
-  const tileset = (loadTileset({ basePath }) as Tileset) || [];
-  const initialState = buildPlayground(size, tileset);
+  const tileset: React.ReactNode[] = (loadTileset({ basePath }) as Tileset) || [];
+  const grid = new GridClass({ width: size.width, height: size.height, tileset });
 
   return (
     <Box
@@ -52,9 +28,9 @@ const Playground: React.FC<PlaygroundProps> = ({ size = { width: 4, height: 4 },
       This is a playground for Wang tiles. It will be interactive and allow you to create your own tilesets and arrays.
       You can also see the Stagecast sim and Stage for random tile arrays
       <ImageList cols={size.width} gap={0}>
-        {initialState.map((row, rowIndex) =>
-          row.map((tile, colIndex) => {
-            return <ImageListItem key={`${rowIndex}-${colIndex}`}>{tile}</ImageListItem>;
+        {grid.rows.map((row, colIndex) =>
+          row.tiles.map((tile, rowIndex) => {
+            return <ImageListItem key={`c${colIndex}-r${rowIndex}`}>{tile.node}</ImageListItem>;
           }),
         )}
       </ImageList>

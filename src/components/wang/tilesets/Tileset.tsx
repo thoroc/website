@@ -1,27 +1,22 @@
 import { Box, ImageList, ImageListItem } from '@mui/material';
-import BaseTile from './BaseTile';
-import { TilesetIndex } from '../playground/types';
+import { loadTileset } from '../core';
 
-interface TilesetProps {
+export interface TilesetProps {
   basePath: string;
+  dimensions?: { width: number; height: number };
   size?: number;
 }
 
-export const loadTileset: React.FC<TilesetProps> = ({ basePath, size = 32 }): React.ReactNode[] => {
-  const tileset = [];
-
-  for (let i = 0; i < 16; i++) {
-    tileset.push(<BaseTile index={i as TilesetIndex} scale={{ width: size, height: size }} basePath={basePath} />);
-  }
-
-  return tileset;
-};
-
-const Tileset: React.FC<TilesetProps> = ({ basePath, size = 32 }) => {
-  const tileset = (loadTileset({ basePath, size }) as React.ReactNode[]) || [];
+const Tileset: React.FC<TilesetProps> = ({ basePath, dimensions = { width: 4, height: 4 }, size = 32 }) => {
+  const tileset = (loadTileset({ basePath, dimensions, size }) as React.ReactNode[]) || [];
 
   // custom order to keep the tileset with a consistent layout
-  const order = [0, 2, 10, 8, 4, 6, 14, 12, 5, 7, 15, 13, 1, 3, 11, 9];
+  const order = [
+    [0, 2, 10, 8],
+    [4, 6, 14, 12],
+    [5, 7, 15, 13],
+    [1, 3, 11, 9],
+  ];
 
   return (
     <Box
@@ -34,9 +29,11 @@ const Tileset: React.FC<TilesetProps> = ({ basePath, size = 32 }) => {
       }}
     >
       <ImageList cols={4} gap={0}>
-        {order.map((i) => (
-          <ImageListItem key={i}>{tileset[i]}</ImageListItem>
-        ))}
+        {Array.from({ length: dimensions.width }).map((_, i) =>
+          Array.from({ length: dimensions.height }).map((_, j) => (
+            <ImageListItem key={`${i}${j}`}>{tileset[order[i][j]]}</ImageListItem>
+          )),
+        )}
       </ImageList>
     </Box>
   );
