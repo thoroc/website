@@ -1,22 +1,24 @@
 import React from 'react';
-import { Position, TilesetIndex, TilesetOptions } from './types';
+import { Position, Tileset, TilesetIndex } from './types';
 
 interface TileClassProps {
   position: Position;
   index?: TilesetIndex;
   node?: React.ReactNode;
-  tilesetOptions?: TilesetOptions;
+  tileset: Tileset;
 }
 
 export class TileClass {
   public position: Position;
   public index: TilesetIndex;
   public node: React.ReactNode;
+  public readonly tileset: Tileset;
 
-  constructor({ position, index, node, tilesetOptions }: TileClassProps) {
+  constructor({ position, index, node, tileset }: TileClassProps) {
     this.position = position;
-    this.index = index ?? (Math.floor(Math.random() * (tilesetOptions?.length ?? 16)) as TilesetIndex);
-    this.node = node;
+    this.index = index ?? (Math.floor(Math.random() * (tileset?.length ?? 16)) as TilesetIndex);
+    this.node = node ? node : tileset[this.index];
+    this.tileset = tileset;
   }
 
   public set value(node: React.ReactNode) {

@@ -12,6 +12,8 @@ const Playground: React.FC<PlaygroundProps> = ({ size = { width: 4, height: 4 },
   const tileset: React.ReactNode[] = (loadTileset({ basePath }) as Tileset) || [];
   const grid = new GridClass(1, { width: size.width, height: size.height, tileset });
 
+  console.dir(grid);
+
   return (
     <Box
       sx={{
@@ -28,11 +30,15 @@ const Playground: React.FC<PlaygroundProps> = ({ size = { width: 4, height: 4 },
       This is a playground for Wang tiles. It will be interactive and allow you to create your own tilesets and arrays.
       You can also see the Stagecast sim and Stage for random tile arrays
       <ImageList cols={size.width} gap={0}>
-        {grid.rows.map((row, colIndex) =>
-          row.tiles.map((tile, rowIndex) => {
-            return <ImageListItem key={`c${colIndex}-r${rowIndex}`}>{tile.node}</ImageListItem>;
-          }),
-        )}
+        {grid.rows.map((row, colIndex) => {
+          console.log(row);
+
+          console.log(row.getTile(1));
+
+          return row.tiles.map((tile, rowIndex) => (
+            <ImageListItem key={`c${colIndex}-r${rowIndex}`}>{tile.node}</ImageListItem>
+          ));
+        })}
       </ImageList>
     </Box>
   );

@@ -1,11 +1,12 @@
 import { RowClass } from './row';
 import { TileClass } from './tile';
 import { loadTileset } from './utils';
+import { Tileset } from './types';
 
 interface GridClassProps {
   width: number;
   height: number;
-  tileset?: React.ReactNode[];
+  tileset?: Tileset;
 }
 
 export class GridClass {
@@ -13,29 +14,30 @@ export class GridClass {
   public readonly width: number;
   public readonly height: number;
   public rows: RowClass[];
-  public tileset: React.ReactNode[];
+  public tileset: Tileset;
 
   constructor(id: number, { width, height, tileset }: GridClassProps) {
     this.id = id;
     this.width = width;
     this.height = height;
-    this.rows = Array.from({ length: height }, (_, y) => new RowClass(y, width));
 
     if (tileset) {
       this.tileset = tileset;
     } else {
-      const loadedTileset: React.ReactNode[] = loadTileset({
+      const loadedTileset: Tileset = loadTileset({
         basePath: 'src/components/wang/tiles',
-      }) as React.ReactNode[];
+      }) as Tileset;
       if (!loadedTileset) {
         throw new Error('Failed to load tileset');
       }
       this.tileset = loadedTileset;
     }
+
+    this.rows = Array.from({ length: height }, (_, y) => new RowClass(y, { length: width, tileset: this.tileset }));
   }
 
-  public getTile(x: number, y: number): TileClass {
-    return this.getRow(y).getTile(x);
+  public getTile(rowIndex: number, tileIndex: number): TileClass {
+    return this.getRow(rowIndex).getTile(tileIndex);
   }
 
   public getRow(rowIndex: number): RowClass {
