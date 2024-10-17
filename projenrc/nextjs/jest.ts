@@ -28,6 +28,12 @@ export class JestConfig extends TextFile {
     this.dir = options?.dir ?? './';
     this.filePath = options?.filename ?? 'jest.config.ts';
     this.project = project;
+    this.project.addDevDeps(
+      'jest-environment-jsdom',
+      '@testing-library/jest-dom',
+      '@testing-library/dom',
+      '@testing-library/react',
+    );
 
     console.log(`Creating JestConfig: ${this.filePath}`);
 

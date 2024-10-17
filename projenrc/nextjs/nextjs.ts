@@ -30,8 +30,6 @@ export class NextJs extends Component {
     project.addDeps('next', 'react', 'react-dom');
 
     project.addDevDeps(
-      '@testing-library/dom',
-      '@testing-library/react',
       '@types/node',
       '@types/react',
       '@types/react-dom',
