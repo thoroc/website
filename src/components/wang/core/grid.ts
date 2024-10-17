@@ -9,12 +9,14 @@ interface GridClassProps {
 }
 
 export class GridClass {
+  public id: number;
   public readonly width: number;
   public readonly height: number;
   public rows: RowClass[];
   public tileset: React.ReactNode[];
 
-  constructor({ width, height }: GridClassProps) {
+  constructor(id, { width, height }: GridClassProps) {
+    this.id = id;
     this.width = width;
     this.height = height;
     this.rows = [];
@@ -25,7 +27,9 @@ export class GridClass {
       this.rows.push(row);
     }
 
-    const loadedTileset = loadTileset({ basePath: 'src/components/wang/tiles' });
+    const loadedTileset: React.ReactNode[] = loadTileset({
+      basePath: 'src/components/wang/tiles',
+    }) as React.ReactNode[];
     if (!loadedTileset) {
       throw new Error('Failed to load tileset');
     }

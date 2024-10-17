@@ -1,16 +1,15 @@
-import { Directions } from './directions';
 import { TileClass } from './tile';
 
 export class RowClass {
+  public readonly id: number;
   public tiles: TileClass[];
 
   constructor(id: number, length: number) {
+    this.id = id;
     this.tiles = [];
 
     for (let y = 0; y < length; y++) {
       const tile = new TileClass({ position: { x: id, y } });
-
-      // console.log('Direction', Directions.GetRandomDirection());
 
       this.tiles.push(tile);
     }
