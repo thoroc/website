@@ -23,17 +23,17 @@ export class TileClass {
     this.node = node;
   }
 
-  public next(): TilesetIndex {
+  public get next(): TilesetIndex {
     return (this.index + 1) as TilesetIndex;
   }
 
   // get the previous value using bitwise OR
-  public previous(): TilesetIndex {
+  public get previous(): TilesetIndex {
     return (this.index - 1) as TilesetIndex;
   }
 
   // get the inverse of the value using bitwise XOR
-  public inverse(): number {
+  public get inverse(): number {
     return this.index ^ 0b1111;
   }
 }
