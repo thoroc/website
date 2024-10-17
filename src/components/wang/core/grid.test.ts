@@ -12,10 +12,10 @@ describe('GridClass', () => {
 
   beforeEach(() => {
     (loadTileset as jest.Mock).mockReturnValue(mockTileset);
-    (RowClass as jest.Mock).mockImplementation((y: number, width: number) => ({
-      y,
-      width,
-      getTile: jest.fn().mockReturnValue(new TileClass({ x: 0, y: 0, index: 0, tileset: mockTileset })),
+    (RowClass as jest.Mock).mockImplementation((id: number, length: number) => ({
+      id,
+      length,
+      getTile: jest.fn().mockReturnValue(new TileClass({ position: { x: id, y: 1 } })),
     }));
   });
 
@@ -36,15 +36,15 @@ describe('GridClass', () => {
     const grid = new GridClass(id, { width: 10, height: 5, tileset: mockTileset });
 
     expect(grid.rows).toHaveLength(5);
-    grid.rows.forEach((row, index) => {
-      expect(row.id).toBe(index);
-      expect(row.tiles.length).toBe(10);
-    });
+
+    for (let i = 0; i < 5; i++) {
+      expect(RowClass).toHaveBeenCalledWith(i, 10);
+    }
   });
 
   it('should load tileset correctly', () => {
     const id = 1;
-    const grid = new GridClass(id, { width: 10, height: 5, tileset: mockTileset });
+    const grid = new GridClass(id, { width: 10, height: 5 });
 
     expect(loadTileset).toHaveBeenCalledWith({ basePath: 'src/components/wang/tiles' });
     expect(grid.tileset).toEqual(mockTileset);
@@ -54,7 +54,7 @@ describe('GridClass', () => {
     const id = 1;
     (loadTileset as jest.Mock).mockReturnValue(null);
 
-    expect(() => new GridClass(id, { width: 10, height: 5, tileset: mockTileset })).toThrow('Failed to load tileset');
+    expect(() => new GridClass(id, { width: 10, height: 5 })).toThrow('Failed to load tileset');
   });
 
   it('should return the correct tile', () => {
@@ -72,6 +72,20 @@ describe('GridClass', () => {
     const row = grid.getRow(2);
 
     expect(row.id).toBe(2);
-    expect(row.tiles.length).toBe(10);
+    expect(row.length).toBe(10);
+  });
+
+  it('should initialize tileset with provided tileset', () => {
+    const id = 1;
+    const grid = new GridClass(id, { width: 10, height: 5, tileset: mockTileset });
+
+    expect(grid.tileset).toBe(mockTileset);
+  });
+
+  it('should initialize tileset with loaded tileset if not provided', () => {
+    const id = 1;
+    const grid = new GridClass(id, { width: 10, height: 5 });
+
+    expect(grid.tileset).toBe(mockTileset);
   });
 });

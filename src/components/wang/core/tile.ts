@@ -19,7 +19,7 @@ export class TileClass {
     this.node = node;
   }
 
-  public setValue(node: React.ReactNode) {
+  public set value(node: React.ReactNode) {
     this.node = node;
   }
 

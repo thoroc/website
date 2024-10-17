@@ -16,10 +16,18 @@ export class RowClass {
   }
 
   public setValue(tileIndex: number, node: React.ReactNode) {
-    this.tiles[tileIndex].setValue(node);
+    this.tiles[tileIndex].value = node;
   }
 
   public getTile(y: number): TileClass {
+    if (!this.tiles[y]) {
+      throw new Error('Tile does not exist');
+    }
+
     return this.tiles[y];
+  }
+
+  public get length(): number {
+    return this.tiles.length;
   }
 }

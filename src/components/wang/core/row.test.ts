@@ -24,7 +24,7 @@ describe('RowClass', () => {
 
     row.setValue(1, node);
 
-    expect(row.tiles[1].setValue).toHaveBeenCalledWith(node);
+    expect(row.tiles[1].value).toBe(node);
   });
 
   it('should get the correct tile', () => {
@@ -33,5 +33,25 @@ describe('RowClass', () => {
     const tile = row.getTile(2);
 
     expect(tile).toBe(row.tiles[2]);
+  });
+
+  it('should return the correct length of tiles', () => {
+    const length = 4;
+    const row = new RowClass(1, length);
+
+    expect(row.length).toBe(length);
+  });
+
+  it('should throw an error when setting value of a non-existent tile', () => {
+    const row = new RowClass(1, 3);
+    const node = '<div>Test Node</div>';
+
+    expect(() => row.setValue(5, node)).toThrow();
+  });
+
+  it('should throw an error when getting a non-existent tile', () => {
+    const row = new RowClass(1, 3);
+
+    expect(() => row.getTile(5)).toThrow();
   });
 });
