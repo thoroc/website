@@ -65,12 +65,17 @@ const WangTile = () => {
             }}
           >
             <ImageList cols={16} gap={0}>
-              {tileset.map((tile, i) => (
-                <ImageListItem key={i}>
-                  {tile}
-                  <ImageListItemBar title={i} position="below" />
-                </ImageListItem>
-              ))}
+              {tileset.map(
+                (tile, i) => (
+                  console.log(tile),
+                  (
+                    <ImageListItem key={i}>
+                      {tile}
+                      <ImageListItemBar title={i} position="below" />
+                    </ImageListItem>
+                  )
+                ),
+              )}
             </ImageList>
           </Box>
           The set is said to be 'complete' as it includes a tile for every possible combination of two edges. We can use

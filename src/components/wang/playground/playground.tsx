@@ -10,7 +10,7 @@ type PlaygroundProps = {
 
 const Playground: React.FC<PlaygroundProps> = ({ size = { width: 4, height: 4 }, basePath }) => {
   const tileset: React.ReactNode[] = (loadTileset({ basePath }) as Tileset) || [];
-  const grid = new GridClass({ width: size.width, height: size.height, tileset });
+  const grid = new GridClass(1, { width: size.width, height: size.height, tileset });
 
   return (
     <Box

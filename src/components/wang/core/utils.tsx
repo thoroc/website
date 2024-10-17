@@ -25,7 +25,7 @@ export const loadTileset: React.FC<TilesetProps> = ({
       tileset.push(
         <BaseTileComponent
           key={`tile-${i}-${j}`}
-          index={i as TilesetIndex}
+          index={(i * dimensions.width + j) as TilesetIndex}
           scale={{ width: size, height: size }}
           basePath={basePath}
           position={{
