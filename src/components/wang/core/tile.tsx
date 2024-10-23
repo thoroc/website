@@ -23,6 +23,10 @@ export class Tile extends React.Component {
    */
   public index: TilesetIndex;
   /**
+   * The maximum index value for the tileset.
+   */
+  public readonly maxIndex: number;
+  /**
    * The base path for the tileset images.
    */
   public readonly basePath: string;
@@ -39,8 +43,8 @@ export class Tile extends React.Component {
     super({});
     this.position = position;
     this.index = index ?? (Math.floor(Math.random() * (maxIndex ?? 16)) as TilesetIndex);
+    this.maxIndex = maxIndex ?? 16;
     this.basePath = basePath;
-    this.value = `${basePath}/${this.index}.gif` as TileValue;
     this.scale = scale ?? { width: 32, height: 32 };
     this.onClick = onClick;
   }
