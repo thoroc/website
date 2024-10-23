@@ -1,17 +1,16 @@
 'use client';
 
 import React from 'react';
-import { TileClass } from './tile';
-import { Tileset } from './types';
+import { Tile } from './tile';
+import { TilesetIndex } from './types';
 
 interface RowProps {
   length: number;
-  tileset: Tileset;
   basePath: string;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-export class RowClass extends React.Component {
+export class Row extends React.Component {
   /**
    * The unique identifier for the row.
    */
@@ -19,20 +18,16 @@ export class RowClass extends React.Component {
   /**
    * The array of tiles that make up the row.
    */
-  public tiles: TileClass[];
-  /**
-   * The tileset used to generate the tiles in the row.
-   */
-  public readonly tileset: Tileset;
+  public tiles: Tile[];
 
-  constructor(id: number, { length, tileset, basePath, onClick }: RowProps) {
+  constructor(id: number, { length, basePath, onClick }: RowProps) {
     super({});
     this.id = id;
-    this.tiles = Array.from(
-      { length },
-      (_, y) => new TileClass({ position: { x: id, y }, tileset, basePath, onClick }),
-    );
-    this.tileset = tileset;
+    this.tiles = Array.from({ length }, (_, y) => new Tile({ position: { x: id, y }, basePath, onClick }));
+  }
+
+  public set tile(index: TilesetIndex) {
+    this.tiles[index].value = `${this.tiles[index].basePath}/${index}.gif`;
   }
 
   /**
@@ -42,7 +37,7 @@ export class RowClass extends React.Component {
    * @returns The tile at the specified index.
    * @throws Will throw an error if the tile at the specified index does not exist.
    */
-  public getTile(index: number): TileClass {
+  public getTile(index: number): Tile {
     if (!this.tiles[index]) {
       throw new Error(`Tile at position=${index} does not exist`);
     }
@@ -56,7 +51,7 @@ export class RowClass extends React.Component {
    * @param index - The current index of the tile.
    * @returns The tile class instance at the next index.
    */
-  public getNextTile(index: number): TileClass {
+  public next(index: number): Tile {
     return this.getTile(index + 1);
   }
 
@@ -66,7 +61,7 @@ export class RowClass extends React.Component {
    * @param index - The current index of the tile.
    * @returns The tile located at the index immediately preceding the given index.
    */
-  public getPreviousTile(index: number): TileClass {
+  public previous(index: number): Tile {
     return this.getTile(index - 1);
   }
 

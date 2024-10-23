@@ -1,20 +1,20 @@
 'use client';
 
-import { RowClass } from './row';
-import { TileClass } from './tile';
+import { Row } from './row';
+import { Tile } from './tile';
 import { loadTileset } from './utils';
 import { Tileset } from './types';
 import React from 'react';
 import { ImageList, ImageListItem } from '@mui/material';
 
-interface GridClassProps {
+interface GridProps {
   width: number;
   height: number;
   tileset?: Tileset;
   basePath: string;
 }
 
-export class GridClass extends React.Component {
+export class Grid extends React.Component {
   /**
    * The unique identifier for the grid.
    */
@@ -30,17 +30,13 @@ export class GridClass extends React.Component {
   /**
    * The array of rows that make up the grid.
    */
-  public rows: RowClass[];
+  public rows: Row[];
   /**
    * The tileset used to generate the tiles in the grid.
    */
   public tileset: Tileset;
-  /**
-   * The base path for the tileset images.
-   */
-  public readonly basePath: string;
 
-  constructor(id: number, { width, height, tileset, basePath }: GridClassProps) {
+  constructor(id: number, { width, height, tileset, basePath }: GridProps) {
     super({});
     this.id = id;
     this.width = width;
@@ -58,11 +54,7 @@ export class GridClass extends React.Component {
       this.tileset = loadedTileset;
     }
 
-    this.rows = Array.from(
-      { length: height },
-      (_, y) => new RowClass(y, { length: width, tileset: this.tileset, basePath }),
-    );
-    this.basePath = basePath;
+    this.rows = Array.from({ length: height }, (_, y) => new Row(y, { length: width, basePath }));
   }
 
   /**
@@ -72,7 +64,7 @@ export class GridClass extends React.Component {
    * @param tileIndex - The index of the tile within the specified row.
    * @returns The tile at the specified row and tile indices.
    */
-  public getTile(rowIndex: number, tileIndex: number): TileClass {
+  public getTile(rowIndex: number, tileIndex: number): Tile {
     return this.getRow(rowIndex).getTile(tileIndex);
   }
 
@@ -82,7 +74,7 @@ export class GridClass extends React.Component {
    * @param rowIndex - The index of the row to retrieve.
    * @returns The row at the specified index.
    */
-  public getRow(rowIndex: number): RowClass {
+  public getRow(rowIndex: number): Row {
     return this.rows[rowIndex];
   }
 

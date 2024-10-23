@@ -1,7 +1,7 @@
 'use client';
 
 import { Box, ImageList, ImageListItem, Typography } from '@mui/material';
-import { GridClass, loadTileset } from '../core';
+import { Grid, loadTileset } from '../core';
 import { useState } from 'react';
 
 type Tileset = React.ReactNode[];
@@ -13,7 +13,7 @@ type PlaygroundProps = {
 
 const Playground: React.FC<PlaygroundProps> = ({ size = { width: 4, height: 4 }, basePath }) => {
   const tileset: React.ReactNode[] = (loadTileset({ basePath }) as Tileset) || [];
-  const grid = new GridClass(1, { width: size.width, height: size.height, tileset, basePath });
+  const grid = new Grid(1, { width: size.width, height: size.height, tileset, basePath });
 
   return (
     <Box

@@ -1,19 +1,19 @@
 'use client';
 
 import React from 'react';
-import { Position, Scale, Tileset, TilesetIndex } from './types';
+import { Position, Scale, TilesetIndex, TileValue } from './types';
 import Image from 'next/image';
 
-interface TileClassProps {
+interface TileProps {
   position: Position;
   index?: TilesetIndex;
+  maxIndex?: number;
   scale?: Scale;
-  tileset: Tileset;
   basePath: string;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-export class TileClass extends React.Component {
+export class Tile extends React.Component {
   /**
    * The position of the tile in the grid.
    */
@@ -22,10 +22,6 @@ export class TileClass extends React.Component {
    * The index of the tile in the tileset.
    */
   public index: TilesetIndex;
-  /**
-   * The tileset used to generate the tile.
-   */
-  public readonly tileset: Tileset;
   /**
    * The base path for the tileset images.
    */
@@ -39,14 +35,32 @@ export class TileClass extends React.Component {
    */
   public onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 
-  constructor({ position, index, tileset, basePath, scale, onClick }: TileClassProps) {
+  constructor({ position, index, maxIndex, basePath, scale, onClick }: TileProps) {
     super({});
     this.position = position;
-    this.index = index ?? (Math.floor(Math.random() * (tileset?.length ?? 16)) as TilesetIndex);
-    this.tileset = tileset;
+    this.index = index ?? (Math.floor(Math.random() * (maxIndex ?? 16)) as TilesetIndex);
     this.basePath = basePath;
+    this.value = `${basePath}/${this.index}.gif` as TileValue;
     this.scale = scale ?? { width: 32, height: 32 };
     this.onClick = onClick;
+  }
+
+  /**
+   * Gets the value of the tile.
+   *
+   * @returns {TileValue} The value of the tile.
+   */
+  public get value(): TileValue {
+    return `${this.basePath}/${this.index}.gif` as TileValue;
+  }
+
+  /**
+   * Sets the value of the tile.
+   *
+   * @param value - The new value of the tile.
+   */
+  public set value(value: TileValue) {
+    this.value = value;
   }
 
   /**
@@ -82,7 +96,7 @@ export class TileClass extends React.Component {
   public render(): React.ReactNode {
     return (
       <Image
-        src={`${this.basePath}/${this.index}.gif`}
+        src={`${this.value}`}
         alt={`Tile ${this.index}`}
         width={this.scale.width}
         height={this.scale.height}

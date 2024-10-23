@@ -1,6 +1,8 @@
 // number between 0 and 15
 export type TilesetIndex = IntRange<0, 15>;
 export type Tileset = React.ReactNode[];
+// the TileValue is a string that conforms to the format ${basePath}/${index}.gif
+export type TileValue = `${string}/${TilesetIndex}.gif`;
 export type Position = { x: number; y: number };
 export type Tile = { index: TilesetIndex; position: Position };
 export type Scale = { width: number; height: number };

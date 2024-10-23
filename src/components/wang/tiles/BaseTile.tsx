@@ -3,14 +3,14 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { TilesetIndex } from '../core/types';
-import { TileClass } from '../core';
+import { Tile } from '../core';
 
 export type TileComponentProps = {
   index: TilesetIndex;
   position: { x: number; y: number };
   scale?: { width: number; height: number };
   basePath: string;
-  onClick?: () => TileClass;
+  onClick?: () => Tile;
 };
 
 const TileComponent: React.FC<TileComponentProps> = ({
