@@ -1,28 +1,52 @@
 import { Row } from './row';
 import { Tile } from './tile';
 
-jest.mock('./tile');
-
 describe('Row', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   const basePath = 'path/to/tileset';
-  const mockTileset = jest.fn();
+
+  it('should initialize with the correct id', () => {
+    const id = 1;
+    const row = new Row(id, { length: 3, basePath });
+
+    expect(row.id).toBe(id);
+  });
 
   it('should initialize with the correct number of tiles', () => {
-    const length = 5;
+    const length = 3;
     const row = new Row(1, { length, basePath });
 
     expect(row.tiles).toHaveLength(length);
+  });
+
+  it('should initialize tiles with correct positions', () => {
+    const length = 3;
+    const row = new Row(1, { length, basePath });
+
     for (let i = 0; i < length; i++) {
-      expect(Tile).toHaveBeenCalledWith({
-        position: { x: 1, y: i },
-        onClick: undefined,
-        basePath,
-        tileset: {},
-      });
+      expect(row.tiles[i].position).toEqual({ x: 1, y: i });
+    }
+  });
+
+  it('should initialize tiles with correct basePath', () => {
+    const length = 3;
+    const row = new Row(1, { length, basePath });
+
+    for (let i = 0; i < length; i++) {
+      expect(row.tiles[i].basePath).toBe(basePath);
+    }
+  });
+
+  it('should initialize tiles with correct onClick handler', () => {
+    const length = 3;
+    const onClick = jest.fn();
+    const row = new Row(1, { length, basePath, onClick });
+
+    for (let i = 0; i < length; i++) {
+      expect(row.tiles[i].onClick).toBe(onClick);
     }
   });
 
@@ -45,5 +69,25 @@ describe('Row', () => {
     const row = new Row(1, { length: 3, basePath });
 
     expect(() => row.getTile(5)).toThrow();
+  });
+
+  it('should throw an error if the tile index is negative', () => {
+    const row = new Row(1, { length: 3, basePath });
+
+    expect(() => row.getTile(-1)).toThrow('Tile at position=-1 does not exist');
+  });
+
+  it('should throw an error if the tile index is out of bounds', () => {
+    const row = new Row(1, { length: 3, basePath });
+
+    expect(() => row.getTile(3)).toThrow('Tile at position=3 does not exist');
+  });
+
+  it('should return the tile if the index is within bounds', () => {
+    const row = new Row(1, { length: 3, basePath });
+
+    const tile = row.getTile(1);
+
+    expect(tile).toBe(row.tiles[1]);
   });
 });
