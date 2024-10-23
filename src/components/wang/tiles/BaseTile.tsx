@@ -18,6 +18,7 @@ const TileComponent: React.FC<TileComponentProps> = ({
   position = { x: 0, y: 0 },
   scale = { width: 32, height: 32 },
   basePath,
+  onClick,
 }): React.ReactNode => {
   // Create a state variable to manage the index
   const [tileIndex, setTileIndex] = useState<TilesetIndex>(index);
@@ -35,7 +36,7 @@ const TileComponent: React.FC<TileComponentProps> = ({
       alt={`Tile ${tileIndex}`}
       width={scale.width}
       height={scale.height}
-      onClick={handleClick}
+      onClick={onClick || handleClick}
       id={`col=${position.x}-row=${position.y}`}
     />
   );

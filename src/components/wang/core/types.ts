@@ -3,6 +3,7 @@ export type TilesetIndex = IntRange<0, 15>;
 export type Tileset = React.ReactNode[];
 export type Position = { x: number; y: number };
 export type Tile = { index: TilesetIndex; position: Position };
+export type Scale = { width: number; height: number };
 
 type IsPositive<N extends number> = `${N}` extends `-${number}` ? false : true;
 type IsSameSign<N1 extends number, N2 extends number> = IsPositive<N1> extends IsPositive<N2> ? true : false;
