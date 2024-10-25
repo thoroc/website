@@ -2,15 +2,12 @@
 
 import { Row } from './row';
 import { Tile } from './tile';
-import { loadTileset } from './utils';
-import { Tileset } from './types';
 import React from 'react';
 import { ImageList, ImageListItem } from '@mui/material';
 
 interface GridProps {
   width: number;
   height: number;
-  tileset?: Tileset;
   basePath: string;
 }
 
@@ -31,28 +28,12 @@ export class Grid extends React.Component {
    * The array of rows that make up the grid.
    */
   public rows: Row[];
-  /**
-   * The tileset used to generate the tiles in the grid.
-   */
-  public tileset: Tileset;
 
-  constructor(id: number, { width, height, tileset, basePath }: GridProps) {
+  constructor(id: number, { width, height, /* tileset, */ basePath }: GridProps) {
     super({});
     this.id = id;
     this.width = width;
     this.height = height;
-
-    if (tileset) {
-      this.tileset = tileset;
-    } else {
-      const loadedTileset: Tileset = loadTileset({
-        basePath: 'src/components/wang/tiles',
-      }) as Tileset;
-      if (!loadedTileset) {
-        throw new Error('Failed to load tileset');
-      }
-      this.tileset = loadedTileset;
-    }
 
     this.rows = Array.from({ length: height }, (_, y) => new Row(y, { length: width, basePath }));
   }
@@ -75,6 +56,10 @@ export class Grid extends React.Component {
    * @returns The row at the specified index.
    */
   public getRow(rowIndex: number): Row {
+    if (!this.rows[rowIndex]) {
+      throw new Error(`Row at position=${rowIndex} does not exist`);
+    }
+
     return this.rows[rowIndex];
   }
 
@@ -82,10 +67,6 @@ export class Grid extends React.Component {
     return (
       <ImageList cols={this.width} gap={0}>
         {this.rows.map((row, colIndex) => {
-          console.log(row);
-
-          console.log(row.getTile(1));
-
           return row.tiles.map((tile, rowIndex) => (
             <ImageListItem key={`c${colIndex}-r${rowIndex}`}>{tile.render()}</ImageListItem>
           ));

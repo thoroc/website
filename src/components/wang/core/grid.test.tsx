@@ -1,32 +1,21 @@
 import { Grid } from './grid';
 import { Row } from './row';
 import { Tile } from './tile';
-import { loadTileset } from './utils';
+import { render } from '@testing-library/react';
 
 jest.mock('./row');
 jest.mock('./tile');
-jest.mock('./utils');
 
 describe('Grid', () => {
-  const mockTileset = ['<div key="1" />', '<div key="2" />'];
   const basePath = 'path/to/tileset';
 
   beforeEach(() => {
-    (loadTileset as jest.Mock).mockReturnValue(mockTileset);
-    (Row as jest.Mock).mockImplementation((id: number, length: number) => ({
-      id,
-      length,
-      getTile: jest.fn().mockReturnValue(new Tile({ position: { x: id, y: 1 }, basePath })),
-    }));
-  });
-
-  afterEach(() => {
     jest.clearAllMocks();
   });
 
   it('should initialize with correct width and height', () => {
     const id = 1;
-    const grid = new Grid(id, { width: 10, height: 5, tileset: mockTileset, basePath });
+    const grid = new Grid(id, { width: 10, height: 5, basePath });
 
     expect(grid.width).toBe(10);
     expect(grid.height).toBe(5);
@@ -34,59 +23,67 @@ describe('Grid', () => {
 
   it('should create rows based on height', () => {
     const id = 1;
-    const grid = new Grid(id, { width: 10, height: 5, tileset: mockTileset, basePath });
+    const grid = new Grid(id, { width: 10, height: 5, basePath });
 
     expect(grid.rows).toHaveLength(5);
 
     for (let i = 0; i < 5; i++) {
-      expect(Row).toHaveBeenCalledWith(i, 10);
+      expect(Row).toHaveBeenCalledWith(i, { length: 10, basePath });
     }
   });
 
-  it('should load tileset correctly', () => {
+  it('should return the correct tile from the specified row and tile indices', () => {
     const id = 1;
     const grid = new Grid(id, { width: 10, height: 5, basePath });
+    const rowIndex = 2;
+    const tileIndex = 3;
+    const mockTile = new Tile({ position: { x: rowIndex, y: tileIndex }, basePath });
 
-    expect(loadTileset).toHaveBeenCalledWith({ basePath: 'src/components/wang/tiles' });
-    expect(grid.tileset).toEqual(mockTileset);
+    (Row.prototype.getTile as jest.Mock).mockReturnValue(mockTile);
+
+    const tile = grid.getTile(rowIndex, tileIndex);
+
+    expect(grid.getRow(rowIndex).getTile).toHaveBeenCalledWith(tileIndex);
+    expect(tile).toBe(mockTile);
   });
 
-  it('should throw an error if tileset fails to load', () => {
+  it('should return the correct row based on the provided row index', () => {
     const id = 1;
-    (loadTileset as jest.Mock).mockReturnValue(null);
+    const rowIndex = 2;
 
-    expect(() => new Grid(id, { width: 10, height: 5, basePath })).toThrow('Failed to load tileset');
-  });
+    (Row as jest.Mock).mockImplementation((id, { length }) => ({
+      id,
+      length,
+    }));
 
-  it('should return the correct tile', () => {
-    const id = 1;
-    const grid = new Grid(id, { width: 10, height: 5, tileset: mockTileset, basePath });
-    const tile = grid.getTile(1, 2);
+    const grid = new Grid(id, { width: 10, height: 5, basePath });
+    const row = grid.getRow(rowIndex);
 
-    expect(grid.getRow(2).getTile).toHaveBeenCalledWith(1);
-    expect(tile).toBeInstanceOf(Tile);
-  });
-
-  it('should return the correct row', () => {
-    const id = 1;
-    const grid = new Grid(id, { width: 10, height: 5, tileset: mockTileset, basePath });
-    const row = grid.getRow(2);
-
-    expect(row.id).toBe(2);
+    expect(row.id).toBe(rowIndex);
     expect(row.length).toBe(10);
   });
 
-  it('should initialize tileset with provided tileset', () => {
-    const id = 1;
-    const grid = new Grid(id, { width: 10, height: 5, tileset: mockTileset, basePath });
-
-    expect(grid.tileset).toBe(mockTileset);
-  });
-
-  it('should initialize tileset with loaded tileset if not provided', () => {
+  it('should throw an error if the row index is out of bounds', () => {
     const id = 1;
     const grid = new Grid(id, { width: 10, height: 5, basePath });
 
-    expect(grid.tileset).toBe(mockTileset);
+    expect(() => grid.getRow(-1)).toThrow();
+    expect(() => grid.getRow(5)).toThrow();
+  });
+
+  it('should render the grid correctly', () => {
+    const id = 1;
+
+    (Row as jest.Mock).mockImplementation((id, { length }) => ({
+      id,
+      length,
+      tiles: Array.from({ length }, (_, x) => new Tile({ position: { x, y: id }, basePath })),
+      getTile: jest.fn(),
+    }));
+
+    const grid = new Grid(id, { width: 3, height: 2, basePath });
+    const { container } = render(grid.render());
+
+    expect(container.querySelectorAll('li')).toHaveLength(6);
   });
 });
