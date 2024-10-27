@@ -1,13 +1,14 @@
 'use client';
 
-import { Row } from './row';
-import { Tile } from './tile';
+import { Row } from './Row';
+import { Tile } from './Tile';
 import React from 'react';
 import { ImageList, ImageListItem } from '@mui/material';
+import { Scale } from './types';
 
-interface GridProps {
-  width: number;
-  height: number;
+export interface GridProps {
+  id: number;
+  size: Scale;
   basePath: string;
 }
 
@@ -29,13 +30,13 @@ export class Grid extends React.Component {
    */
   public rows: Row[];
 
-  constructor(id: number, { width, height, /* tileset, */ basePath }: GridProps) {
+  constructor({ id, size, basePath }: GridProps) {
     super({});
     this.id = id;
-    this.width = width;
-    this.height = height;
+    this.width = size.width;
+    this.height = size.height;
 
-    this.rows = Array.from({ length: height }, (_, y) => new Row(y, { length: width, basePath }));
+    this.rows = Array.from({ length: size.height }, (_, y) => new Row({ id: y, length: size.width, basePath }));
   }
 
   /**

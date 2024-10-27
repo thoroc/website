@@ -1,4 +1,4 @@
-import { Tile } from './tile';
+import { Tile } from './Tile';
 import { TilesetIndex } from './types';
 
 describe('Tile', () => {
@@ -7,6 +7,7 @@ describe('Tile', () => {
   describe('value', () => {
     it('should return the correct value based on basePath and index', () => {
       const tile = new Tile({
+        id: 1,
         position: { x: 1, y: 2 },
         index: 0b1010 as TilesetIndex,
         basePath,
@@ -18,6 +19,7 @@ describe('Tile', () => {
 
     it('should update the value when index changes', () => {
       const tile = new Tile({
+        id: 1,
         position: { x: 1, y: 2 },
         index: 0b1010 as TilesetIndex,
         basePath,
@@ -31,6 +33,7 @@ describe('Tile', () => {
   describe('inverse', () => {
     it('should return the bitwise inverse of the value', () => {
       const tile = new Tile({
+        id: 1,
         position: { x: 0, y: 0 },
         index: 0b0000 as TilesetIndex,
         maxIndex: 16,
@@ -40,6 +43,7 @@ describe('Tile', () => {
       expect(tile.inverse).toBe(0b1111);
 
       const tile2 = new Tile({
+        id: 1,
         position: { x: 0, y: 0 },
         index: 0b1010 as TilesetIndex,
         basePath,
@@ -48,6 +52,7 @@ describe('Tile', () => {
       expect(tile2.inverse).toBe(0b0101);
 
       const tile3 = new Tile({
+        id: 1,
         position: { x: 0, y: 0 },
         index: 0b1111 as TilesetIndex,
         basePath,
@@ -60,6 +65,7 @@ describe('Tile', () => {
   describe('position', () => {
     it('should return the correct position', () => {
       const tile = new Tile({
+        id: 1,
         position: { x: 1, y: 2 },
         index: 0b0000 as TilesetIndex,
         basePath,
@@ -70,6 +76,7 @@ describe('Tile', () => {
 
     it('should set the correct position', () => {
       const tile = new Tile({
+        id: 1,
         position: { x: 1, y: 2 },
         index: 0b0000 as TilesetIndex,
         basePath,
@@ -83,6 +90,7 @@ describe('Tile', () => {
   describe('index', () => {
     it('should return the correct index', () => {
       const tile = new Tile({
+        id: 1,
         position: { x: 1, y: 2 },
         index: 0b1010 as TilesetIndex,
         basePath,
@@ -95,6 +103,7 @@ describe('Tile', () => {
   describe('next', () => {
     it('should return the next index', () => {
       const tile = new Tile({
+        id: 1,
         position: { x: 1, y: 2 },
         index: 0b1010 as TilesetIndex,
         basePath,
@@ -107,6 +116,7 @@ describe('Tile', () => {
   describe('previous', () => {
     it('should return the previous index', () => {
       const tile = new Tile({
+        id: 1,
         position: { x: 1, y: 2 },
         index: 0b1010 as TilesetIndex,
         basePath,
@@ -119,6 +129,7 @@ describe('Tile', () => {
   describe('inverse', () => {
     it('should return the bitwise inverse of the value', () => {
       const tile = new Tile({
+        id: 1,
         position: { x: 1, y: 2 },
         index: 0b0000 as TilesetIndex,
         basePath,
@@ -127,6 +138,7 @@ describe('Tile', () => {
       expect(tile.inverse).toBe(0b1111);
 
       const tile2 = new Tile({
+        id: 2,
         position: { x: 1, y: 2 },
         index: 0b1010 as TilesetIndex,
         basePath,
@@ -135,6 +147,7 @@ describe('Tile', () => {
       expect(tile2.inverse).toBe(0b0101);
 
       const tile3 = new Tile({
+        id: 3,
         position: { x: 1, y: 2 },
         index: 0b1111 as TilesetIndex,
         basePath,

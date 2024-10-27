@@ -1,8 +1,7 @@
 'use client';
 
-import { Box, ImageList, ImageListItem, Typography } from '@mui/material';
-import { Grid, loadTileset } from '../core';
-import { useState } from 'react';
+import { Box, Typography } from '@mui/material';
+import { Grid, loadTileset, GridProps } from '../core';
 
 type Tileset = React.ReactNode[];
 
@@ -13,7 +12,7 @@ type PlaygroundProps = {
 
 const Playground: React.FC<PlaygroundProps> = ({ size = { width: 4, height: 4 }, basePath }) => {
   const tileset: React.ReactNode[] = (loadTileset({ basePath }) as Tileset) || [];
-  const grid = new Grid(1, { width: size.width, height: size.height, tileset, basePath });
+  // const grid = new Grid(1, { width: size.width, height: size.height, basePath });
 
   return (
     <Box
@@ -30,7 +29,7 @@ const Playground: React.FC<PlaygroundProps> = ({ size = { width: 4, height: 4 },
       </Typography>
       This is a playground for Wang tiles. It will be interactive and allow you to create your own tilesets and arrays.
       You can also see the Stagecast sim and Stage for random tile arrays
-      {grid.render()}
+      <Grid size={size} basePath={basePath} />
     </Box>
   );
 };

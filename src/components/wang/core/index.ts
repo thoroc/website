@@ -1,4 +1,4 @@
 export * from './utils';
-export * from './grid';
-export * from './tile';
+export * from './Grid';
+export * from './Tile';
 export * from './types';

@@ -1,10 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Tile } from './tile';
+import { Tile } from './Tile';
 import { TilesetIndex } from './types';
 
 interface RowProps {
+  id: number;
   length: number;
   basePath: string;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
@@ -20,7 +21,7 @@ export class Row extends React.Component {
    */
   public tiles: Tile[];
 
-  constructor(id: number, { length, basePath, onClick }: RowProps) {
+  constructor({ id, length, basePath, onClick }: RowProps) {
     super({});
     this.id = id;
     this.tiles = Array.from({ length }, (_, y) => new Tile({ position: { x: id, y }, basePath, onClick }));

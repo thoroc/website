@@ -5,6 +5,7 @@ import { Position, Scale, TilesetIndex, TileValue } from './types';
 import Image from 'next/image';
 
 interface TileProps {
+  id: number;
   position: Position;
   index?: TilesetIndex;
   maxIndex?: number;
@@ -14,6 +15,10 @@ interface TileProps {
 }
 
 export class Tile extends React.Component {
+  /**
+   * The unique identifier for the tile.
+   */
+  public readonly id: number;
   /**
    * The position of the tile in the grid.
    */
@@ -39,8 +44,9 @@ export class Tile extends React.Component {
    */
   public onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 
-  constructor({ position, index, maxIndex, basePath, scale, onClick }: TileProps) {
+  constructor({ id, position, index, maxIndex, basePath, scale, onClick }: TileProps) {
     super({});
+    this.id = id;
     this.position = position;
     this.index = index ?? (Math.floor(Math.random() * (maxIndex ?? 16)) as TilesetIndex);
     this.maxIndex = maxIndex ?? 16;
