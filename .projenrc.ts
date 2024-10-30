@@ -11,7 +11,7 @@ const project = new TypeScriptAppProject({
   description: 'Personal website',
   projenrcTs: true,
   packageManager: NodePackageManager.PNPM,
-  jest: true,
+  jest: false, // we'll be using a custom jest config for nextjs
   eslint: true,
   prettier: true,
   prettierOptions: {

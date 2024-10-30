@@ -5,6 +5,7 @@ import { TsConfig } from './tsconfig';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { JestConfig } from './jest';
+import { TsConfigDev } from './tsconfig/test';
 
 export interface NextJsOptions {
   /**
@@ -86,6 +87,7 @@ export class NextJs extends Component {
     // source code
     new TsConfig(this.project);
     new JestConfig(this.project);
+    new TsConfigDev(this.project);
 
     this.project.gitignore.exclude('/.next/');
     this.project.gitignore.exclude('/out/');

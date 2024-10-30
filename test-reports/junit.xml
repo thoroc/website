@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="48" failures="2" errors="0" time="5.142">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2024-10-27T22:57:47" time="0.921" tests="1">
+    <testcase classname=" hello" name=" hello" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="Directions.Keys" errors="0" failures="0" skipped="0" timestamp="2024-10-27T22:57:47" time="0.976" tests="18">
+    <testcase classname="Directions.Keys should return an array of numbers representing the cardinal directions" name="Directions.Keys should return an array of numbers representing the cardinal directions" time="0.009">
+    </testcase>
+    <testcase classname="Directions.Keys should have the correct length" name="Directions.Keys should have the correct length" time="0.001">
+    </testcase>
+    <testcase classname="Directions.Keys should contain only numbers" name="Directions.Keys should contain only numbers" time="0.001">
+    </testcase>
+    <testcase classname="Directions.CardinalList should return an array of cardinal directions" name="Directions.CardinalList should return an array of cardinal directions" time="0.001">
+    </testcase>
+    <testcase classname="Directions.ReversedCardinalList should return an array of cardinal directions in reversed order" name="Directions.ReversedCardinalList should return an array of cardinal directions in reversed order" time="0.001">
+    </testcase>
+    <testcase classname="Directions.MinValue should return the minimum value of the cardinal directions" name="Directions.MinValue should return the minimum value of the cardinal directions" time="0">
+    </testcase>
+    <testcase classname="Directions.MaxValue should return the maximum value of the cardinal directions" name="Directions.MaxValue should return the maximum value of the cardinal directions" time="0.001">
+    </testcase>
+    <testcase classname="Directions.All should return an array of all cardinal directions" name="Directions.All should return an array of all cardinal directions" time="0.005">
+    </testcase>
+    <testcase classname="Directions.OppositeDirection should return the opposite direction" name="Directions.OppositeDirection should return the opposite direction" time="0.001">
+    </testcase>
+    <testcase classname="Directions.Next should return the next direction in sequence" name="Directions.Next should return the next direction in sequence" time="0.001">
+    </testcase>
+    <testcase classname="Directions.Previous should return the previous direction in sequence" name="Directions.Previous should return the previous direction in sequence" time="0.002">
+    </testcase>
+    <testcase classname="Directions.GetWeight should return the sum of the directions" name="Directions.GetWeight should return the sum of the directions" time="0.001">
+    </testcase>
+    <testcase classname="Directions.GetDirections should return the directions corresponding to the weight" name="Directions.GetDirections should return the directions corresponding to the weight" time="0.001">
+    </testcase>
+    <testcase classname="Directions.GetExcludedDirections should return the directions not included in the weight" name="Directions.GetExcludedDirections should return the directions not included in the weight" time="0.001">
+    </testcase>
+    <testcase classname="Directions.GetRandomDirection should return a random direction not included in the weight mask" name="Directions.GetRandomDirection should return a random direction not included in the weight mask" time="0.001">
+    </testcase>
+    <testcase classname="Directions.GetRandomDirection should return null if all directions are included in the weight mask" name="Directions.GetRandomDirection should return null if all directions are included in the weight mask" time="0.001">
+    </testcase>
+    <testcase classname="Directions.GetDirection should return the direction corresponding to the value" name="Directions.GetDirection should return the direction corresponding to the value" time="0.001">
+    </testcase>
+    <testcase classname="Directions.GetDirection should throw an error if the value is not a valid direction" name="Directions.GetDirection should throw an error if the value is not a valid direction" time="0.018">
+    </testcase>
+  </testsuite>
+  <testsuite name="Tile" errors="0" failures="0" skipped="0" timestamp="2024-10-27T22:57:47" time="1.033" tests="9">
+    <testcase classname="Tile value should return the correct value based on basePath and index" name="Tile value should return the correct value based on basePath and index" time="0.008">
+    </testcase>
+    <testcase classname="Tile value should update the value when index changes" name="Tile value should update the value when index changes" time="0.001">
+    </testcase>
+    <testcase classname="Tile inverse should return the bitwise inverse of the value" name="Tile inverse should return the bitwise inverse of the value" time="0.001">
+    </testcase>
+    <testcase classname="Tile position should return the correct position" name="Tile position should return the correct position" time="0.001">
+    </testcase>
+    <testcase classname="Tile position should set the correct position" name="Tile position should set the correct position" time="0">
+    </testcase>
+    <testcase classname="Tile index should return the correct index" name="Tile index should return the correct index" time="0.001">
+    </testcase>
+    <testcase classname="Tile next should return the next index" name="Tile next should return the next index" time="0.001">
+    </testcase>
+    <testcase classname="Tile previous should return the previous index" name="Tile previous should return the previous index" time="0">
+    </testcase>
+    <testcase classname="Tile inverse should return the bitwise inverse of the value" name="Tile inverse should return the bitwise inverse of the value" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="Row" errors="0" failures="0" skipped="0" timestamp="2024-10-27T22:57:47" time="1.05" tests="11">
+    <testcase classname="Row should initialize with the correct id" name="Row should initialize with the correct id" time="0.009">
+    </testcase>
+    <testcase classname="Row should initialize with the correct number of tiles" name="Row should initialize with the correct number of tiles" time="0.003">
+    </testcase>
+    <testcase classname="Row should initialize tiles with correct positions" name="Row should initialize tiles with correct positions" time="0.002">
+    </testcase>
+    <testcase classname="Row should initialize tiles with correct basePath" name="Row should initialize tiles with correct basePath" time="0.001">
+    </testcase>
+    <testcase classname="Row should initialize tiles with correct onClick handler" name="Row should initialize tiles with correct onClick handler" time="0.002">
+    </testcase>
+    <testcase classname="Row should get the correct tile" name="Row should get the correct tile" time="0.001">
+    </testcase>
+    <testcase classname="Row should return the correct length of tiles" name="Row should return the correct length of tiles" time="0.001">
+    </testcase>
+    <testcase classname="Row should throw an error when getting a non-existent tile" name="Row should throw an error when getting a non-existent tile" time="0.013">
+    </testcase>
+    <testcase classname="Row should throw an error if the tile index is negative" name="Row should throw an error if the tile index is negative" time="0.002">
+    </testcase>
+    <testcase classname="Row should throw an error if the tile index is out of bounds" name="Row should throw an error if the tile index is out of bounds" time="0.001">
+    </testcase>
+    <testcase classname="Row should return the tile if the index is within bounds" name="Row should return the tile if the index is within bounds" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="loadTileset" errors="0" failures="2" skipped="0" timestamp="2024-10-27T22:57:47" time="1.421" tests="3">
+    <testcase classname="loadTileset should generate the correct number of tiles" name="loadTileset should generate the correct number of tiles" time="0.005">
+    </testcase>
+    <testcase classname="loadTileset should render BaseTileComponent with correct props" name="loadTileset should render BaseTileComponent with correct props" time="0.036">
+      <failure>Error: expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+Expected: ObjectContaining {&quot;basePath&quot;: &quot;path/to/tileset&quot;, &quot;index&quot;: 1, &quot;position&quot;: {&quot;x&quot;: 1, &quot;y&quot;: 0}, &quot;scale&quot;: {&quot;height&quot;: 32, &quot;width&quot;: 32}}, Anything
+Received
+       1: {&quot;basePath&quot;: &quot;path/to/tileset&quot;, &quot;index&quot;: 0, &quot;position&quot;: {&quot;x&quot;: 0, &quot;y&quot;: 0}, &quot;scale&quot;: {&quot;height&quot;: 32, &quot;width&quot;: 32}}, {}
+       2: {&quot;basePath&quot;: &quot;path/to/tileset&quot;, &quot;index&quot;: 1, &quot;position&quot;: {&quot;x&quot;: 0, &quot;y&quot;: 1}, &quot;scale&quot;: {&quot;height&quot;: 32, &quot;width&quot;: 32}}, {}
+       3: {&quot;basePath&quot;: &quot;path/to/tileset&quot;, &quot;index&quot;: 2, &quot;position&quot;: {&quot;x&quot;: 0, &quot;y&quot;: 2}, &quot;scale&quot;: {&quot;height&quot;: 32, &quot;width&quot;: 32}}, {}
+
+Number of calls: 16
+    at toHaveBeenCalledWith (/Users/thomas.roche/Projects/github/thoroc/website/src/components/wang/core/utils.test.tsx:31:33)
+    at Array.forEach (&lt;anonymous&gt;)
+    at Object.forEach (/Users/thomas.roche/Projects/github/thoroc/website/src/components/wang/core/utils.test.tsx:27:15)
+    at Promise.then.completed (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/run.js:121:9)
+    at run (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-runner@29.7.0/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-runner@29.7.0/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-runner@29.7.0/node_modules/jest-runner/build/testWorker.js:106:12)</failure>
+    </testcase>
+    <testcase classname="loadTileset should use default dimensions and size if not provided" name="loadTileset should use default dimensions and size if not provided" time="0.006">
+      <failure>Error: expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+Expected: ObjectContaining {&quot;basePath&quot;: &quot;path/to/tileset&quot;, &quot;index&quot;: 1, &quot;position&quot;: {&quot;x&quot;: 1, &quot;y&quot;: 0}, &quot;scale&quot;: {&quot;height&quot;: 32, &quot;width&quot;: 32}}, Anything
+Received
+       1: {&quot;basePath&quot;: &quot;path/to/tileset&quot;, &quot;index&quot;: 0, &quot;position&quot;: {&quot;x&quot;: 0, &quot;y&quot;: 0}, &quot;scale&quot;: {&quot;height&quot;: 32, &quot;width&quot;: 32}}, {}
+       2: {&quot;basePath&quot;: &quot;path/to/tileset&quot;, &quot;index&quot;: 1, &quot;position&quot;: {&quot;x&quot;: 0, &quot;y&quot;: 1}, &quot;scale&quot;: {&quot;height&quot;: 32, &quot;width&quot;: 32}}, {}
+       3: {&quot;basePath&quot;: &quot;path/to/tileset&quot;, &quot;index&quot;: 2, &quot;position&quot;: {&quot;x&quot;: 0, &quot;y&quot;: 2}, &quot;scale&quot;: {&quot;height&quot;: 32, &quot;width&quot;: 32}}, {}
+
+Number of calls: 16
+    at toHaveBeenCalledWith (/Users/thomas.roche/Projects/github/thoroc/website/src/components/wang/core/utils.test.tsx:55:33)
+    at Array.forEach (&lt;anonymous&gt;)
+    at Object.forEach (/Users/thomas.roche/Projects/github/thoroc/website/src/components/wang/core/utils.test.tsx:51:15)
+    at Promise.then.completed (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/run.js:121:9)
+    at run (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-circus@29.7.0_babel-plugin-macros@3.1.0/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-runner@29.7.0/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-runner@29.7.0/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/Users/thomas.roche/Projects/github/thoroc/website/node_modules/.pnpm/jest-runner@29.7.0/node_modules/jest-runner/build/testWorker.js:106:12)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Grid" errors="0" failures="0" skipped="0" timestamp="2024-10-27T22:57:47" time="3.552" tests="6">
+    <testcase classname="Grid should initialize with correct width and height" name="Grid should initialize with correct width and height" time="0.006">
+    </testcase>
+    <testcase classname="Grid should create rows based on height" name="Grid should create rows based on height" time="0.003">
+    </testcase>
+    <testcase classname="Grid should return the correct tile from the specified row and tile indices" name="Grid should return the correct tile from the specified row and tile indices" time="0.001">
+    </testcase>
+    <testcase classname="Grid should return the correct row based on the provided row index" name="Grid should return the correct row based on the provided row index" time="0.001">
+    </testcase>
+    <testcase classname="Grid should throw an error if the row index is out of bounds" name="Grid should throw an error if the row index is out of bounds" time="0.009">
+    </testcase>
+    <testcase classname="Grid should render the grid correctly" name="Grid should render the grid correctly" time="0.035">
+    </testcase>
+  </testsuite>
+</testsuites>

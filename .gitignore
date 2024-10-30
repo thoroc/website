@@ -29,9 +29,6 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
-/test-reports/
-junit.xml
-/coverage/
 !/.prettierignore
 !/.prettierrc.json
 !/.npmrc
@@ -48,6 +45,7 @@ junit.xml
 .vercel
 !/tsconfig.json
 !/jest.config.ts
+!/tsconfig.test.json
 /.next/
 /out/
 next-env.d.ts
