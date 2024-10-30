@@ -31,7 +31,10 @@ export class JestConfig extends TextFile {
     this.project.addDevDeps(
       'jest',
       '@types/jest',
+      '@jest/reporters',
+      '@jest/types',
       'ts-jest',
+      'jest-junit',
       'jest-environment-jsdom',
       '@testing-library/jest-dom',
       '@testing-library/dom',
@@ -106,7 +109,7 @@ const config: Config = {`);
     ]
   },
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom'],
   moduleNameMapper: {
     // ...
     '^@/(.*)$': '<rootDir>/$1',

@@ -1,6 +1,14 @@
 {
   "dependencies": [
     {
+      "name": "@jest/reporters",
+      "type": "build"
+    },
+    {
+      "name": "@jest/types",
+      "type": "build"
+    },
+    {
       "name": "@testing-library/dom",
       "type": "build"
     },
@@ -85,6 +93,10 @@
     },
     {
       "name": "jest-environment-jsdom",
+      "type": "build"
+    },
+    {
+      "name": "jest-junit",
       "type": "build"
     },
     {
