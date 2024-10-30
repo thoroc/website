@@ -1,6 +1,18 @@
 {
   "dependencies": [
     {
+      "name": "@testing-library/dom",
+      "type": "build"
+    },
+    {
+      "name": "@testing-library/jest-dom",
+      "type": "build"
+    },
+    {
+      "name": "@testing-library/react",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -69,6 +81,10 @@
     },
     {
       "name": "jest",
+      "type": "build"
+    },
+    {
+      "name": "jest-environment-jsdom",
       "type": "build"
     },
     {

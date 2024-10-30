@@ -47,6 +47,7 @@ junit.xml
 !/vercel.json
 .vercel
 !/tsconfig.json
+!/jest.config.ts
 /.next/
 /out/
 next-env.d.ts
