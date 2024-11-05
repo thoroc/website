@@ -40,6 +40,8 @@ export class JestConfig extends TextFile {
       '@testing-library/dom',
       '@testing-library/react',
     );
+    this.project.addGitIgnore('coverage/');
+    this.project.addGitIgnore('test-reports/');
 
     console.log(`Creating JestConfig: ${this.filePath}`);
 

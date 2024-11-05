@@ -45,6 +45,8 @@ jspm_packages/
 .vercel
 !/tsconfig.json
 !/jest.config.ts
+coverage/
+test-reports/
 !/tsconfig.test.json
 /.next/
 /out/
