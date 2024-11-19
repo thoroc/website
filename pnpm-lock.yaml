@@ -74,7 +74,7 @@ importers:
         version: 8.14.0(eslint@9.15.0(jiti@1.21.6))(typescript@5.6.3)
       '@vercel/next':
         specifier: ^4.3.10
-        version: 4.3.20
+        version: 4.3.21
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.49)
@@ -1150,6 +1150,9 @@ packages:
 
   '@vercel/next@4.3.20':
     resolution: {integrity: sha512-EOKwb6YLr5o75NwuB02mep2aZgQSOLZqdm03dRXGDPW70du4a3IMRk2+6WObPy5y773DMUIoywq36K7DdBWFTQ==}
+
+  '@vercel/next@4.3.21':
+    resolution: {integrity: sha512-bF4w95Q+W75gYU2KA73jTrSb4BX3R/0MYMYM7nuiC0aWg+g0yejvgs151fmjQr0JDtR4EL9lkv5Bo01rKsab8Q==}
 
   '@vercel/nft@0.27.3':
     resolution: {integrity: sha512-oySTdDSzUAFDXpsSLk9Q943o+/Yu/+TCFxnehpFQEf/3khi2stMpTHPVNwFdvZq/Z4Ky93lE+MGHpXCRpMkSCA==}
@@ -3120,8 +3123,8 @@ packages:
       encoding:
         optional: true
 
-  node-gyp-build@4.8.3:
-    resolution: {integrity: sha512-EMS95CMJzdoSKoIiXo8pxKoL8DYxwIZXYlLmgPb8KUv794abpnLK6ynsCAWNliOjREKruYKdzbh76HHYUHX7nw==}
+  node-gyp-build@4.8.4:
+    resolution: {integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==}
     hasBin: true
 
   node-int64@0.4.0:
@@ -5287,6 +5290,13 @@ snapshots:
       - encoding
       - supports-color
 
+  '@vercel/next@4.3.21':
+    dependencies:
+      '@vercel/nft': 0.27.3
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+
   '@vercel/nft@0.27.3':
     dependencies:
       '@mapbox/node-pre-gyp': 1.0.11
@@ -5299,7 +5309,7 @@ snapshots:
       glob: 7.2.3
       graceful-fs: 4.2.11
       micromatch: 4.0.8
-      node-gyp-build: 4.8.3
+      node-gyp-build: 4.8.4
       resolve-from: 5.0.0
     transitivePeerDependencies:
       - encoding
@@ -7648,7 +7658,7 @@ snapshots:
     dependencies:
       whatwg-url: 5.0.0
 
-  node-gyp-build@4.8.3: {}
+  node-gyp-build@4.8.4: {}
 
   node-int64@0.4.0: {}
 
