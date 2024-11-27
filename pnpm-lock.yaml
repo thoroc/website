@@ -74,7 +74,7 @@ importers:
         version: 8.14.0(eslint@9.15.0(jiti@1.21.6))(typescript@5.7.2)
       '@vercel/next':
         specifier: ^4.3.10
-        version: 4.3.21
+        version: 4.4.0
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.49)
@@ -1172,9 +1172,6 @@ packages:
 
   '@vercel/hydrogen@1.0.9':
     resolution: {integrity: sha512-IPAVaALuGAzt2apvTtBs5tB+8zZRzn/yG3AGp8dFyCsw/v5YOuk0Q5s8Z3fayLvJbFpjrKtqRNDZzVJBBU3MrQ==}
-
-  '@vercel/next@4.3.21':
-    resolution: {integrity: sha512-bF4w95Q+W75gYU2KA73jTrSb4BX3R/0MYMYM7nuiC0aWg+g0yejvgs151fmjQr0JDtR4EL9lkv5Bo01rKsab8Q==}
 
   '@vercel/next@4.4.0':
     resolution: {integrity: sha512-oqeAY+f6qMeS3/zEUHeJqa47Sa4ULB33a1DuXcRgvACwewGFUApp2XYm+pgci3EU/19ij8c2EHIASp7B6Y+XVg==}
@@ -5336,13 +5333,6 @@ snapshots:
     dependencies:
       '@vercel/static-config': 3.0.0
       ts-morph: 12.0.0
-
-  '@vercel/next@4.3.21':
-    dependencies:
-      '@vercel/nft': 0.27.3
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
 
   '@vercel/next@4.4.0':
     dependencies:
