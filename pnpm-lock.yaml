@@ -131,7 +131,7 @@ importers:
         version: 5.7.2
       vercel:
         specifier: ^39.0.0
-        version: 39.2.5
+        version: 39.2.6
 
 packages:
 
@@ -2331,6 +2331,10 @@ packages:
     resolution: {integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==}
     engines: {node: '>=8.6.0'}
 
+  fast-glob@3.3.3:
+    resolution: {integrity: sha512-7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==}
+    engines: {node: '>=8.6.0'}
+
   fast-json-stable-stringify@2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
 
@@ -4141,8 +4145,8 @@ packages:
     resolution: {integrity: sha512-kiGUalWN+rgBJ/1OHZsBtU4rXZOfj/7rKQxULKlIzwzQSvMJUUNgPwJEEh7gU6xEVxC0ahoOBvN2YI8GH6FNgA==}
     engines: {node: '>=10.12.0'}
 
-  vercel@39.2.5:
-    resolution: {integrity: sha512-mPrXm2Va5uPmajy3sEXf50ExEPAlZtYkKJpCvKMCGWNl6J/AH+n9qYrBo0GsKTYrMSnzGzeGZgzNCGoVFI4xCA==}
+  vercel@39.2.6:
+    resolution: {integrity: sha512-s3T8eEXeNcMcgU+NsHS2/1B7Pj1aWip+dy0IQqbDwy1ArFFI0S4IzpN2+XxfG8Y6fPJnLGUyywTe/nbFU7SWPg==}
     engines: {node: '>= 16'}
     hasBin: true
 
@@ -5148,7 +5152,7 @@ snapshots:
 
   '@ts-morph/common@0.11.1':
     dependencies:
-      fast-glob: 3.3.2
+      fast-glob: 3.3.3
       minimatch: 3.1.2
       mkdirp: 1.0.4
       path-browserify: 1.0.1
@@ -6885,6 +6889,14 @@ snapshots:
       micromatch: 4.0.8
 
   fast-glob@3.3.2:
+    dependencies:
+      '@nodelib/fs.stat': 2.0.5
+      '@nodelib/fs.walk': 1.2.8
+      glob-parent: 5.1.2
+      merge2: 1.4.1
+      micromatch: 4.0.8
+
+  fast-glob@3.3.3:
     dependencies:
       '@nodelib/fs.stat': 2.0.5
       '@nodelib/fs.walk': 1.2.8
@@ -8935,7 +8947,7 @@ snapshots:
       '@types/istanbul-lib-coverage': 2.0.6
       convert-source-map: 2.0.0
 
-  vercel@39.2.5:
+  vercel@39.2.6:
     dependencies:
       '@vercel/build-utils': 9.0.1
       '@vercel/fun': 1.1.2
