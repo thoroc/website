@@ -80,7 +80,7 @@ importers:
         version: 10.4.20(postcss@8.5.1)
       constructs:
         specifier: ^10.0.0
-        version: 10.4.1
+        version: 10.4.2
       eslint:
         specifier: ^9.0.0
         version: 9.18.0(jiti@1.21.7)
@@ -116,7 +116,7 @@ importers:
         version: 3.4.2
       projen:
         specifier: ^0.91.0
-        version: 0.91.6(constructs@10.4.1)
+        version: 0.91.6(constructs@10.4.2)
       tailwindcss:
         specifier: ^3.4.13
         version: 3.4.17(ts-node@10.9.2(@types/node@22.10.9)(typescript@5.7.3))
@@ -1631,8 +1631,8 @@ packages:
     resolution: {integrity: sha512-Qil5KwghMzlqd51UXM0b6fyaGHtOC22scxrwrz4A2882LyUMwQjnvaedN1HAeXzphspQ6CpHkzMAWxBTUruDLg==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
-  constructs@10.4.1:
-    resolution: {integrity: sha512-eIZhGVl6SFI0T6eKtjDRlgInJn3X3uh6l4MMpRF+cQrCfm1SPkDUAMwwYEJ6bpj0Muv2quKE2E8HrijKGyNGaw==}
+  constructs@10.4.2:
+    resolution: {integrity: sha512-wsNxBlAott2qg8Zv87q3eYZYgheb9lchtBfjHzzLHtXbttwSrHPs1NNQbBrmbb1YZvYg2+Vh0Dor76w4mFxJkA==}
 
   content-type@1.0.4:
     resolution: {integrity: sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==}
@@ -6040,7 +6040,7 @@ snapshots:
 
   consola@3.3.3: {}
 
-  constructs@10.4.1: {}
+  constructs@10.4.2: {}
 
   content-type@1.0.4: {}
 
@@ -8250,9 +8250,9 @@ snapshots:
     dependencies:
       parse-ms: 2.1.0
 
-  projen@0.91.6(constructs@10.4.1):
+  projen@0.91.6(constructs@10.4.2):
     dependencies:
-      constructs: 10.4.1
+      constructs: 10.4.2
 
   promisepipe@3.0.0: {}
 
