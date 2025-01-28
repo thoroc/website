@@ -20,14 +20,18 @@
         "digest"
       ],
       "automerge": true,
-      "automergeStrategy": "squash"
+      "automergeStrategy": "squash",
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch-pin-digest"
     },
     {
       "matchDepTypes": [
         "devDependencies"
       ],
       "automerge": true,
-      "automergeStrategy": "squash"
+      "automergeStrategy": "squash",
+      "groupName": "all non-major dev dependencies",
+      "groupSlug": "all-dev-deps"
     }
   ]
 }
