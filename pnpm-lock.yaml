@@ -36,8 +36,8 @@ importers:
         specifier: ^7.9.0
         version: 7.9.0
       lorem-ipsum:
-        specifier: ^2.0.8
-        version: 2.0.8
+        specifier: ^3.0.0
+        version: 3.0.0
       next:
         specifier: ^15.0.0
         version: 15.1.6(@babel/core@7.29.7)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -2345,10 +2345,6 @@ packages:
     resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
     engines: {node: '>= 10'}
 
-  commander@9.5.0:
-    resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
-    engines: {node: ^12.20.0 || >=14}
-
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
@@ -3628,9 +3624,8 @@ packages:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
 
-  lorem-ipsum@2.0.8:
-    resolution: {integrity: sha512-5RIwHuCb979RASgCJH0VKERn9cQo/+NcAi2BMe9ddj+gp7hujl6BI+qdOG4nVsLDpwWEJwTVYXNKP6BGgbcoGA==}
-    engines: {node: '>= 8.x', npm: '>= 5.x'}
+  lorem-ipsum@3.0.0:
+    resolution: {integrity: sha512-FYUViKFk1p8OJWrDFtpyvCW1l92E7vWA3g/tmpvdrLmyoLti9aqD7/xeSEXu/e2oi/zG/TL8I9eZsrh+t1NWbw==}
     hasBin: true
 
   lru-cache@10.4.3:
@@ -7139,8 +7134,6 @@ snapshots:
 
   commander@7.2.0: {}
 
-  commander@9.5.0: {}
-
   concat-map@0.0.1: {}
 
   consola@3.4.2: {}
@@ -8881,9 +8874,7 @@ snapshots:
     dependencies:
       js-tokens: 4.0.0
 
-  lorem-ipsum@2.0.8:
-    dependencies:
-      commander: 9.5.0
+  lorem-ipsum@3.0.0: {}
 
   lru-cache@10.4.3: {}
 
