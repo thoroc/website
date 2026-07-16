@@ -44,7 +44,7 @@
     "jest-junit": "^17.0.0",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
-    "projen": "^0.99.0",
+    "projen": "^0.101.0",
     "tailwindcss": "^4.0.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
