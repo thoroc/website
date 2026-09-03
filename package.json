@@ -30,7 +30,7 @@
     "@types/react-dom": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
-    "@vercel/next": "^4.3.10",
+    "@vercel/next": "^11.0.0",
     "autoprefixer": "^10.4.20",
     "constructs": "^10.0.0",
     "eslint": "^10.0.0",
@@ -48,8 +48,8 @@
     "tailwindcss": "^4.0.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^6.0.0",
-    "vercel": "^54.0.0"
+    "typescript": "^7.0.0",
+    "vercel": "^59.0.0"
   },
   "dependencies": {
     "@emotion/cache": "^11.13.1",
